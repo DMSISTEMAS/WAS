@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+<h:head>
+	<title>Login</title>
+	<link href="/resources/css/modal.css" rel="stylesheet" type="text/css" />
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300display=swap;"
+		rel="stylesheet" />
+</h:head>
+
+<body style="background-image: url('/img/blue.jpg');">
+	<button class="hover"
+		onclick="document.getElementById('id01').style.display = 'block'"
+		title="Iniciar sesión">
+		<img src="/img/espiritu.png" style="height: 100px; width: 100px;" />
+	</button>
+
+	<div id="id01" class="modal">
+		<h:form id="formLogin" class="modal-content animate"
+			style="text-align: center">
+			<p:growl id="mensaje" showSummary="true" life="50000"
+				showDetail="true" />
+			<p:blockUI block="formLogin" trigger="inicio">
+				<h3 style="font-size: 15px; color: black">Por favor espere...</h3>
+				<p:graphicImage value="/img/loading.gif"
+					style="height: 200px; width: 200px" />
+			</p:blockUI>
+			<p:growl id="mensajeGeneral" sticky="true" autoUpdate="true"
+				showDetail="true" life="3000" />
+			<div class="imgcontainer">
+				<span
+					onclick="document.getElementById('id01').style.display = 'none'"
+					class="close" title="Cerrar ventana">&times;</span> <img
+					src="img/sanpedro.png" alt="Login" class="avatar" />
+				<h3>Parroquía de San Pedro Apóstol</h3>
+				<br></br> <label for="uname"><b>Usuario</b></label> <br /> <input
+					type="text" name="uname" jsf:value="#{usuario.usuario.nickname}"
+					placeholder="Ingresa tu usuario" required="true" label="username"
+					jsf:requiredMessage="Requiere usuario" jsf:label="Campo requerido" />
+				<br /> <label for="psw"><b>Contraseña</b></label> <br /> <input
+					type="password" name="psw" placeholder="Ingresa tu contraseña"
+					jsf:value="#{usuario.usuario.contrasena}" required="true"
+					jsf:label="Campo requerido" label="password"
+					jsf:requiredMessage="Requiere contraseña" /><br />
+				<br />
+				<p:commandButton id="inicio" update="formLogin, mensajeGeneral"
+					value="Iniciar sesión" actionListener="#{usuario.login()}"
+					style="font-size: 17px; font-family: 'Open Sans Condensed', sans-serif; 
+					background-color: #1D60A4 !important; border-radius: 8px; 
+					width:75%; color: #030200">
+				</p:commandButton>
+			</div>
+
+		</h:form>
+	</div>
+
+	<script>
+            // Get the modal
+            var modal = document.getElementById('id01');
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+
+</body>
+
+</html>

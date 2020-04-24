@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link
+		href="https://fonts.googleapis.com/css?family=Barlow:300display=swap"
+		rel="stylesheet" />
+</h:head>
+<body>
+	<ui:composition template="/Template/Template.xhtml">
+
+		<ui:define name="top">
+
+		</ui:define>
+
+		<ui:define name="content">
+			<br></br>
+			<h3 style="font-family: 'Barlow', sans-serif;">ADMINISTRACIÓN DE
+				ALUMNOS</h3>
+			<br></br>
+			<!--Barra de tareas-->
+			<h:form>
+
+
+				<p:toolbar>
+					<f:facet name="left">
+						<br></br>
+						<p:commandButton value="" oncomplete="PF('dlgAgregar').show()"
+							style="height: 50px; width: 50px; background-image: url('/img/new.png') !important; 
+							background-size: 50px; background-repeat: no-repeat"
+							title="Agregar nuevo registro" update="frmAgregar" />
+						<br></br>
+						<br></br>
+					</f:facet>
+
+					<f:facet name="right">
+
+					</f:facet>
+
+				</p:toolbar>
+			</h:form>
+			<!--Barra de tareasl-->
+			<br></br>
+			<h3 style="font-family: 'Barlow', sans-serif;">REGISTROS</h3>
+			<br></br>
+			<!--Formulario principal-->
+			<h:form id="frmPrincipal">
+				<p:growl id="messages" showDetail="true" showSummary="true" />
+				<p:panel id="pnlPrincipal" header=""
+					style="margin: 0 auto; text-align: center; font-size: 10px; font-family: 'Barlow', sans-serif">
+					<p:layoutUnit id="tablaPrincipal" position="center"
+						style="padding: 5px; text-align: center;">
+						<p:dataTable var="var" value="#{catequizado.listaCatequizado}"
+							sortMode="multiple" scrollable="true" scrollHeight="435"
+							scrollWidth="100%"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="10,20,50,100,200,500" rows="10"
+							reflow="true" paginator="true" rowHover="true"
+							currentPageReportTemplate="Registros #{catequizado.listaCatequizado.size()}"
+							paginatorAlwaysVisible="true" emptyMessage="No hay registros">
+
+							<p:column headerText="Nombre" style="width: 6%">
+								<h:outputText value="#{var.nombre}" />
+							</p:column>
+
+							<p:column headerText="Apellido paterno" style="width: 6%">
+								<h:outputText value="#{var.apellidoPaterno}" />
+							</p:column>
+
+							<p:column headerText="Apellido materno" style="width: 6%">
+								<h:outputText value="#{var.apellidoMaterno}" />
+							</p:column>
+
+							<p:column headerText="Dirección" style="width: 6%">
+								<h:outputText value="#{var.direccion}" />
+							</p:column>
+
+							<p:column headerText="Teléfono" style="width: 6%">
+								<h:outputText value="#{var.telefono}" />
+							</p:column>
+
+							<p:column headerText="Correo" style="width: 15%">
+								<h:outputText value="#{var.correo}" />
+							</p:column>
+
+							<p:column headerText="Fecha de nacimiento" style="width: 6%">
+								<h:outputText value="#{var.fechaNacimiento}" />
+							</p:column>
+
+							<p:column headerText="Fecha de Bautismo" style="width: 6%">
+								<h:outputText value="#{var.fechaBautismo}" />
+							</p:column>
+
+							<p:column headerText="Lugar de Bautismo" style="width: 6%">
+								<h:outputText value="#{var.lugarBautismo}" />
+							</p:column>
+
+							<p:column headerText="Nombre del Papá" style="width: auto">
+								<h:outputText value="#{var.nombrePapa}" />
+							</p:column>
+
+							<p:column headerText="Nombre de la Mamá" style="width: auto">
+								<h:outputText value="#{var.nombreMama}" />
+							</p:column>
+
+							<p:column headerText="..." style="width: 3%">
+								<p:commandButton value=""
+									style="height: 28px; width: 28px; background-image: url('/img/edit.png') !important;
+									background-size: 26px; background-repeat: no-repeat"
+									title="Editar registro" />
+							</p:column>
+
+							<p:column headerText="..." style="width: 3%">
+								<p:commandButton value=""
+									style="height: 28px; width: 28px; background-image: url('/img/delete.png') !important;
+									background-size: 26px; background-repeat: no-repeat"
+									title="Borrar registro" />
+							</p:column>
+						</p:dataTable>
+					</p:layoutUnit>
+				</p:panel>
+			</h:form>
+			<!--Formulario principal-->
+
+
+			<!--Diálogo para agregar-->
+			<h:form id="frmAgregar" enctype="multipart/form-data">
+
+				<p:dialog id="dialogo" widgetVar="dlgAgregar"
+					header="Agregar nuevo registro" showEffect="drop"
+					hideEffect="slide" resizable="false" responsive="true"
+					style="font-size: 13px">
+					<p:panel id="pnlAgregar">
+						<p:messages id="msg" showDetail="true" closable="true" />
+						<p:panelGrid id="panelAgregar" columns="4" style="margin: 0 auto">
+
+							<p:outputLabel for="nombre" value="Nombre" />
+							<p:inputText id="nombre" style="width: 300px"
+								value="#{catequizado.catequizado.nombre}" required="true"
+								requiredMessage="Requiere nombre" placeholder="Nombre">
+								<p:message for="nombre" />
+							</p:inputText>
+
+							<p:outputLabel for="ap" value="Apellido paterno" />
+							<p:inputText id="ap" style="width: 300px"
+								value="#{catequizado.catequizado.apellidoPaterno}"
+								required="true" requiredMessage="Requiere apellido paterno"
+								placeholder="Apellido Paterno">
+								<p:message for="ap" />
+							</p:inputText>
+
+							<p:outputLabel for="am" value="Apellido materno" />
+							<p:inputText id="am" style="width: 300px"
+								value="#{catequizado.catequizado.apellidoMaterno}"
+								required="true" requiredMessage="Requiere apellido materno"
+								placeholder="Apellido materno">
+								<p:message for="am" />
+							</p:inputText>
+
+							<p:outputLabel for="dir" value="Dirección" />
+							<p:inputTextarea id="dir" style="width: 300px"
+								value="#{catequizado.catequizado.direccion}" required="true"
+								requiredMessage="Requiere dirección" placeholder="Dirección">
+								<p:message for="dir" />
+							</p:inputTextarea>
+
+							<p:outputLabel for="tel" value="Teléfono" />
+							<p:inputText id="tel" style="width: 200px"
+								value="#{catequizado.catequizado.telefono}" required="true"
+								requiredMessage="Requiere teléfono" placeholder="Teléfono">
+								<p:message for="tel" />
+							</p:inputText>
+
+							<p:outputLabel for="corr" value="Correo" />
+							<p:inputText id="corr" style="width: 200px"
+								value="#{catequizado.catequizado.correo}" required="false"
+								placeholder="Correo (Opcional)">
+								<p:message for="corr" />
+							</p:inputText>
+
+							<p:outputLabel for="fecha" value="Fecha de nacimiento" />
+							<p:calendar id="fecha" yearRange="1950:2025" effect="blind"
+								effectDuration="13000" pages="2" showOn="button"
+								style="width: 150px;"
+								value="#{catequizado.catequizado.fechaNacimiento}"
+								required="true" placeholder="Fecha de nacimiento"
+								pattern="yyyy-MM-dd" mask="true">
+								<p:message for="fecha" />
+							</p:calendar>
+
+							<p:outputLabel for="lb" value="Lugar de Bautismo" />
+							<p:inputTextarea id="lb" style="width: 300px"
+								value="#{catequizado.catequizado.lugarBautismo}" required="true"
+								placeholder="Lugar de Bautismo">
+								<p:message for="lb" />
+							</p:inputTextarea>
+
+							<p:outputLabel for="fechaB" value="Fecha de Bautismo" />
+							<p:calendar id="fechaB" yearRange="1950:2025" effect="blind"
+								effectDuration="13000" pages="2" showOn="button"
+								style="width: 150px;"
+								value="#{catequizado.catequizado.fechaBautismo}" required="true"
+								placeholder="Fecha de Bautismo" pattern="yyyy-MM-dd" mask="true">
+								<p:message for="fechaB" />
+							</p:calendar>
+
+							<p:outputLabel for="papa" value="Nombre del Papá" />
+							<p:inputTextarea id="papa" style="width: 300px"
+								value="#{catequizado.catequizado.nombrePapa}" required="true"
+								requiredMessage="Nombre del Papá" placeholder="Nombre del Papá">
+								<p:message for="papa" />
+							</p:inputTextarea>
+
+							<p:outputLabel for="mama" value="Nombre de la Mamá" />
+							<p:inputTextarea id="mama" style="width: 300px"
+								value="#{catequizado.catequizado.nombreMama}" required="true"
+								requiredMessage="Nombre del Mamá"
+								placeholder="Nombre de la Mamá">
+								<p:message for="mama" />
+							</p:inputTextarea>
+
+							<p:outputLabel value="Foto" />
+							<p:fileUpload value="#{catequizado.file}" mode="simple" />
+						</p:panelGrid>
+					</p:panel>
+
+					<p:spacer width="930" height="5" />
+					<p:commandButton id="track"
+						style="height: 50px; width: 50px; background-image: url('/img/save.png') !important;
+						background-size: 50px; background-repeat: no-repeat"
+						ajax="false" value="" update="pnlAgregar, msg"
+						title="Guardar registro" actionListener="#{catequizado.guardar()}">
+					</p:commandButton>
+				</p:dialog>
+			</h:form>
+			<!--Diálogo para agregar-->
+
+		</ui:define>
+
+
+	</ui:composition>
+</body>
+</html>

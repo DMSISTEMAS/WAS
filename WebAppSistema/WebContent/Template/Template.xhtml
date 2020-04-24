@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html" xml:lang="es"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet name="/css/default.css" />
+	<h:outputStylesheet name="/css/cssLayout.css" />
+	<link href="/resources/css/estilo_menu.css" rel="stylesheet"
+		type="text/css" />
+	<link
+		href="https://fonts.googleapis.com/css?family=Barlow:300display=swap"
+		rel="stylesheet" />
+	<!-- 		href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"></link> -->
+	<title>Sistema</title>
+	
+</h:head>
+
+<h:body>
+
+	<div>
+		<div id="left">
+			<nav> <a class="logo" href=""> </a>
+
+			<div class="scrollbar" id="style-1">
+				<a href="../Views/Control.sys"> 
+				<i class="fa fa-file-text"></i> 
+				</a>
+
+				<a href="../Views/Horario.sys"> 
+				<i class="fa fa-calendar"></i>
+				</a> 
+				
+				<a href="../Views/Parroquia.sys"> 
+				<i class="fa fa-plus-square-o"></i>
+				</a>
+
+				<div class="mid-block">
+					<a href="../Views/Catequizado.sys"> 
+					<i class="fa fa-users"></i>
+					</a> <a href="../Views/Catequista.sys"> 
+					<i class="fa fa-user"></i>
+					</a> <a href="../Views/Libro.sys"> 
+					<i class="fa fa-book fa-lg"></i>
+					</a>
+
+				</div>
+				<a href="../Views/Inscripciones.sys"> 
+				<i class="fa fa-list-alt"></i>
+				</a>
+				<a href="../Views/Admin.sys"> 
+				<i class="fa fa-cog"></i>
+				</a>
+			</div>
+			</nav>
+			<ui:insert name="left"></ui:insert>
+		</div>
+		<div id="content" class="left_content">
+			<ui:insert name="content">Content</ui:insert>
+		</div>
+	</div>
+	<div id="bottom">
+		<ui:insert name="bottom">By DM SISTEMAS 2020</ui:insert>
+	</div>
+
+</h:body>
+
+</html>

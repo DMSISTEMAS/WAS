@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link
+		href="https://fonts.googleapis.com/css?family=Barlow:300display=swap"
+		rel="stylesheet" />
+</h:head>
+<body>
+	<ui:composition template="/Template/Template.xhtml">
+
+		<ui:define name="top">
+
+		</ui:define>
+
+		<ui:define name="content">
+			<br></br>
+			<h3 style="font-family: 'Barlow', sans-serif;">ADMINISTRACIÓN DE
+				CALIFICACIONES-CICLO ESCOLAR 2019-2020</h3>
+			<br></br>
+			<h:form>
+				<p:growl id="messages" showDetail="true" />
+
+				<p:toolbar style="font-size: 12px">
+					<f:facet name="left">
+						<table border="0">
+							<thead>
+								<tr>
+									<th style="width: 30px"></th>
+									<th>Semanas</th>
+									<th style="width: 10px"></th>
+									<th>Horario</th>
+									<th style="width: 10px"></th>
+									<th>Libro</th>
+									<th style="width: 10px"></th>
+									<th>Buscar</th>
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="width: 30px"></td>
+									<td><p:selectOneMenu id="semana" title="Selecciona semana"
+											value="#{control.semana}" style="width:150px">
+											<f:selectItem itemLabel="Selecione semana" itemValue="" />
+											<f:selectItems value="#{control.listaSemanas}" />
+										</p:selectOneMenu></td>
+									<td style="width: 10px"></td>
+									<td><p:selectOneMenu id="horario"
+											title="Selecciona horario" value="#{control.idHorario}"
+											style="width:150px">
+											<f:selectItem itemLabel="Selecione horario" itemValue="" />
+											<f:selectItems value="#{control.listaHorarios}" />
+										</p:selectOneMenu></td>
+									<td style="width: 10px"></td>
+									<td><p:selectOneMenu id="libro" title="Selecciona libro"
+											value="#{control.idLibro}" style="width:150px">
+											<f:selectItem itemLabel="Selecione libro" itemValue="" />
+											<f:selectItems value="#{control.listaLibros}" />
+										</p:selectOneMenu></td>
+									<td style="width: 10px"></td>
+									<td><p:commandButton value="" update="frmPrincipal"
+											actionListener="#{control.listaPorSemana()}"
+											style="height: 38px; width: 38px; background-image: url('/img/search.png') !important;
+									background-size: 36px; background-repeat: no-repeat"
+											title="Buscar" /></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</f:facet>
+
+					<f:facet name="right">
+
+					</f:facet>
+
+				</p:toolbar>
+			</h:form>
+			<br></br>
+			<h3 style="font-family: 'Barlow', sans-serif;">REGISTRO DE
+				CALIFICACIONES</h3>
+			<br></br>
+			<h3 style="font-family: 'Barlow', sans-serif;">A=Asistencia,
+				P=Puntualidad, C=Conducta, AM=Asistencia a Misa, T=Tarea,
+				CF=Catequesis familiar, CE=Calificación Extra, O=Observaciones,
+				J=Justificante, L=Limpieza</h3>
+			<br></br>
+			<h:form id="frmPrincipal">
+				<p:growl id="msg" showDetail="true" showSummary="true" />
+				<p:panel id="pnl" header=""
+					style="margin: 0 auto; font-size: 11px; font-family: 'Barlow', sans-serif">
+					<p:layoutUnit id="layoutCiclo" position="center"
+						style="padding: 3px;">
+						<p:dataTable id="tblCiclo" paginator="true" sortMode="multiple"
+							scrollable="true" scrollHeight="535"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="30,50,100,200,500" scrollWidth="100%"
+							rows="30" var="c" editable="true" rowHover="true"
+							value="#{control.listaPorSemana}"
+							currentPageReportTemplate="Alumnos #{control.listaPorSemana.size()}"
+							paginatorAlwaysVisible="true" emptyMessage="No hay registros">
+
+							<p:column headerText="No." style="width: 2%; text-align: center;">
+								<h:outputText value="#{c.semana}" />
+							</p:column>
+
+							<p:column headerText="Fecha"
+								style="width: 7%; text-align: center;">
+								<h:outputText value="#{c.fecha}">
+									<f:convertDateTime pattern="dd-MMMM-yyyy" />
+								</h:outputText>
+							</p:column>
+
+							<p:column filterBy="#{c.registro.catequizado.nombre}"
+								sortBy="#{c.registro.catequizado.nombre}" headerText="Nombre"
+								style="width: 10%">
+								<h:outputText value="#{c.registro.catequizado.nombre}" />
+							</p:column>
+
+							<p:column filterBy="#{c.registro.catequizado.apellidoPaterno}"
+								sortBy="#{c.registro.catequizado.apellidoPaterno}"
+								headerText="Apellidos" style="width:12%">
+								<h:outputText
+									value="#{c.registro.catequizado.apellidoPaterno} #{c.registro.catequizado.apellidoMaterno}" />
+							</p:column>
+
+							<p:column headerText="A" style="text-align: center; width:2%">
+								<h:outputText value="#{c.asistencia.equals('.') ? '●' : '◢'}"
+									style="#{c.asistencia eq '/' ? 'color: red; font-weight: bold; font-size: 25px;' :(c.asistencia eq '.' ? 'color: red; color: black;font-weight: bold; font-size: 25px;' : 'color: red; background-color: #37F728;font-weight: bold; font-size: 13px;')}" />
+							</p:column>
+
+							<p:column headerText="P" style="text-align: center; width:2%">
+								<h:outputText value="#{c.puntualidad}"
+									style="font-size: 15px; font-weight: bold" />
+							</p:column>
+
+							<p:column headerText="C" style="text-align: center; width:2%">
+								<h:outputText value="#{c.conducta}"
+									style="font-size: 15px; font-weight: bold" />
+							</p:column>
+
+							<p:column headerText="AM" style="text-align: center; width:10%">
+								<h:outputText value="#{c.misa}"
+									style="font-size: 13px;" />
+							</p:column>
+							
+							<p:column headerText="AM" style="text-align: center; width:10%">
+								<h:outputText value="#{c.misaSalida}"
+									style="font-size: 13px;"/>
+							</p:column>
+
+							<p:column headerText="T" style="text-align: center; width:2%">
+								<h:outputText value="#{c.tarea.equals('.') ? '●' : '◢'}"
+									style="#{c.tarea eq '/' ? 'color: red; font-weight: bold; font-size: 25px;' :(c.tarea eq '.' ? 'color: red; color: black;font-weight: bold; font-size: 25px;' : 'color: red; background-color: #37F728;font-weight: bold; font-size: 13px;')}" />
+							</p:column>
+
+							<p:column headerText="CF" style="text-align: center; width:2%">
+								<h:outputText
+									value="#{c.catequesisFamiliar.equals('.') ? '●' : '◢'}"
+									style="#{c.catequesisFamiliar eq '/' ? 'color: red; font-weight: bold; font-size: 25px;' :(c.catequesisFamiliar eq '.' ? 'color: red; color: black;font-weight: bold; font-size: 25px;' : 'color: red; background-color: #37F728;font-weight: bold; font-size: 13px;')}" />
+							</p:column>
+
+							<p:column headerText="CE" style="text-align: center;">
+								<h:outputText value="#{c.extra}" />
+							</p:column>
+
+							<p:column headerText="L" style="text-align: center;">
+								<h:outputText value="$ #{c.aseo}"
+									style="#{c.aseo eq '0' ? 'color: red; font-weight: bold; font-size: 15px;' :(c.aseo &gt; '0' ? 'color: red; color: black;font-weight: bold; font-size: 15px;' : 'color: red; background-color: #37F728;font-weight: bold; font-size: 15px;')}">
+									<f:convertNumber pattern="###,###" currencySymbol="$"
+										type="currency" />
+								</h:outputText>
+							</p:column>
+
+							<p:column headerText="O" style="width:15%; text-align: center;">
+								<h:outputText value="#{c.observaciones}" />
+							</p:column>
+
+							<p:column headerText="J" style="text-align: center;">
+								<h:outputText value="#{c.justificante}" />
+							</p:column>
+							<p:column headerText="Calificar" style="text-align: center;">
+								<p:commandButton value=""
+									style="height: 28px; width: 28px; background-image: url('/img/edit.png') !important;
+									background-size: 26px; background-repeat: no-repeat"
+									title="Editar registro" oncomplete="PF('dlgEditar').show()"
+									update="frmEditar">
+									<f:setPropertyActionListener value="#{c}"
+										target="#{control.ciclo1920}" />
+								</p:commandButton>
+							</p:column>
+
+						</p:dataTable>
+
+					</p:layoutUnit>
+				</p:panel>
+			</h:form>
+
+			<h:form id="frmEditar">
+				<p:growl id="msgEditar" showDetail="true" showSummary="true" />
+				<p:dialog id="dialogoEditar"
+					header="Editar registro de: #{control.ciclo1920.registro.catequizado.nombre} #{control.ciclo1920.registro.catequizado.apellidoPaterno} #{control.ciclo1920.registro.catequizado.apellidoMaterno} / Fecha: #{control.ciclo1920.fecha}"
+					widgetVar="dlgEditar" resizable="true" showEffect="clip"
+					hideEffect="fold" width="450" style="font-size: 13px">
+					<p:panelGrid id="pnlEditar" columns="2">
+
+						<p:outputLabel value="Asitencia" />
+						<p:inputText value="#{control.ciclo1920.asistencia}"
+							placeholder="Asistencia" />
+
+						<p:outputLabel value="Puntualidad" />
+						<p:inputText value="#{control.ciclo1920.puntualidad}"
+							placeholder="Puntualidad" />
+
+						<p:outputLabel value="Conducta" />
+						<p:inputText value="#{control.ciclo1920.conducta}"
+							placeholder="Conducta" />
+
+						<p:outputLabel value="Asistencia a Misa" />
+						<p:inputText value="#{control.ciclo1920.misa}"
+							placeholder="Asistencia a Misa" />
+
+						<p:outputLabel value="Tarea" />
+						<p:inputText value="#{control.ciclo1920.tarea}"
+							placeholder="Tarea" />
+
+						<p:outputLabel value="Catequesis familiar" />
+						<p:inputText value="#{control.ciclo1920.catequesisFamiliar}"
+							placeholder="Catequesis familiar" />
+
+						<p:outputLabel value="Calif. Extra" />
+						<p:inputText value="#{control.ciclo1920.extra}"
+							placeholder="Calif. Extra" />
+
+						<p:outputLabel value="Observaciones" />
+						<p:inputText value="#{control.ciclo1920.observaciones}"
+							placeholder="Observaciones" />
+
+						<p:outputLabel value="Justificante" />
+						<p:inputText value="#{control.ciclo1920.justificante}"
+							placeholder="Justificante" />
+
+						<p:outputLabel value="Aseo" />
+						<p:inputText value="#{control.ciclo1920.aseo}" placeholder="Aseo" />
+					</p:panelGrid>
+					<br></br>
+					<p:spacer height="50" width="370" />
+					<p:commandButton value=""
+						style="height:
+						50px; width: 50px; background-image:
+						url('/img/save.png') !important;
+									background-size: 50px; background-repeat:
+						no-repeat"
+						title="Actualizar registro"
+						actionListener="#{control.actualizar()}"
+						oncomplete="PF('dlgEditar').hide()" update="frmPrincipal" />
+				</p:dialog>
+			</h:form>
+
+		</ui:define>
+
+
+	</ui:composition>
+</body>
+</html>

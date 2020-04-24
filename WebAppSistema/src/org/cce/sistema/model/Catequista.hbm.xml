@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 19/04/2020 03:20:28 PM by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true"
+	default-access="property" default-cascade="none" default-lazy="true">
+	<class catalog="db_cce" dynamic-insert="false"
+		dynamic-update="false" mutable="true"
+		name="org.cce.sistema.model.Catequista" optimistic-lock="version"
+		polymorphism="implicit" select-before-update="false"
+		table="catequista">
+		<id name="idCatequista" type="java.lang.Integer">
+			<column name="idCatequista" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="nombre"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="100" name="nombre" />
+		</property>
+		<property generated="never" lazy="false"
+			name="apellidoPaterno" optimistic-lock="true" type="string"
+			unique="false">
+			<column length="50" name="apellidoPaterno" />
+		</property>
+		<property generated="never" lazy="false"
+			name="apellidoMaterno" optimistic-lock="true" type="string"
+			unique="false">
+			<column length="50" name="apellidoMaterno" />
+		</property>
+		<property generated="never" lazy="false" name="direccion"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="250" name="direccion" />
+		</property>
+		<property generated="never" lazy="false" name="telefono"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="15" name="telefono" />
+		</property>
+		<property generated="never" lazy="false"
+			name="fechaNacimiento" optimistic-lock="true" type="date"
+			unique="false">
+			<column length="10" name="fechaNacimiento" />
+		</property>
+		<property generated="never" lazy="false" name="foto"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="250" name="foto" />
+		</property>
+		<set fetch="select" inverse="true" lazy="true" mutable="true"
+			name="registros" optimistic-lock="true" sort="unsorted"
+			table="registro">
+			<key on-delete="noaction">
+				<column name="idCatequista" />
+			</key>
+			<one-to-many class="org.cce.sistema.model.Registro"
+				not-found="exception" />
+		</set>
+	</class>
+</hibernate-mapping>
