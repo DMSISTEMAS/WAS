@@ -134,38 +134,34 @@
 
 							<p:column headerText="A" style="text-align: center; width:2%">
 								<h:outputText value="#{c.asistencia.equals('.') ? '●' : '◢'}"
-									style="#{c.asistencia eq '/' ? 'color: red; font-weight: bold; font-size: 25px;' :(c.asistencia eq '.' ? 'color: red; color: black;font-weight: bold; font-size: 25px;' : 'color: red; background-color: #37F728;font-weight: bold; font-size: 13px;')}" />
+									style="#{c.asistencia eq '/' ? 'color: red; font-weight: bold; font-size: 20px;' :(c.asistencia eq '.' ? 'color: red; color: black;font-weight: bold; font-size: 20px;' : 'color: red; background-color: #37F728;font-weight: bold; font-size: 13px;')}" />
 							</p:column>
 
 							<p:column headerText="P" style="text-align: center; width:2%">
-								<h:outputText value="#{c.puntualidad}"
-									style="font-size: 15px; font-weight: bold" />
+								<h:outputText value="#{c.puntualidad}" style="font-weight: bold" />
 							</p:column>
 
 							<p:column headerText="C" style="text-align: center; width:2%">
-								<h:outputText value="#{c.conducta}"
-									style="font-size: 15px; font-weight: bold" />
+								<h:outputText value="#{c.conducta}" style="font-weight: bold" />
 							</p:column>
 
-							<p:column headerText="AM" style="text-align: center; width:10%">
-								<h:outputText value="#{c.misa}"
-									style="font-size: 13px;" />
+							<p:column headerText="AM" style="text-align: center; width:5%">
+								<h:outputText value="#{c.misa}" />
 							</p:column>
-							
-							<p:column headerText="AM" style="text-align: center; width:10%">
-								<h:outputText value="#{c.misaSalida}"
-									style="font-size: 13px;"/>
+
+							<p:column headerText="AM" style="text-align: center; width:5%">
+								<h:outputText value="#{c.misaSalida}" />
 							</p:column>
 
 							<p:column headerText="T" style="text-align: center; width:2%">
 								<h:outputText value="#{c.tarea.equals('.') ? '●' : '◢'}"
-									style="#{c.tarea eq '/' ? 'color: red; font-weight: bold; font-size: 25px;' :(c.tarea eq '.' ? 'color: red; color: black;font-weight: bold; font-size: 25px;' : 'color: red; background-color: #37F728;font-weight: bold; font-size: 13px;')}" />
+									style="#{c.tarea eq '/' ? 'color: red; font-weight: bold; font-size: 20px;' :(c.tarea eq '.' ? 'color: red; color: black;font-weight: bold; font-size: 20px;' : 'color: red; background-color: #37F728;font-weight: bold; font-size: 13px;')}" />
 							</p:column>
 
 							<p:column headerText="CF" style="text-align: center; width:2%">
 								<h:outputText
 									value="#{c.catequesisFamiliar.equals('.') ? '●' : '◢'}"
-									style="#{c.catequesisFamiliar eq '/' ? 'color: red; font-weight: bold; font-size: 25px;' :(c.catequesisFamiliar eq '.' ? 'color: red; color: black;font-weight: bold; font-size: 25px;' : 'color: red; background-color: #37F728;font-weight: bold; font-size: 13px;')}" />
+									style="#{c.catequesisFamiliar eq '/' ? 'color: red; font-weight: bold; font-size: 20px;' :(c.catequesisFamiliar eq '.' ? 'color: red; color: black;font-weight: bold; font-size: 20px;' : 'color: red; background-color: #37F728;font-weight: bold; font-size: 13px;')}" />
 							</p:column>
 
 							<p:column headerText="CE" style="text-align: center;">
@@ -174,7 +170,7 @@
 
 							<p:column headerText="L" style="text-align: center;">
 								<h:outputText value="$ #{c.aseo}"
-									style="#{c.aseo eq '0' ? 'color: red; font-weight: bold; font-size: 15px;' :(c.aseo &gt; '0' ? 'color: red; color: black;font-weight: bold; font-size: 15px;' : 'color: red; background-color: #37F728;font-weight: bold; font-size: 15px;')}">
+									style="#{c.aseo eq '0' ? 'color: red; font-weight: bold;' :(c.aseo &gt; '0' ? 'color: red; color: black;font-weight: bold;' : 'color: red; background-color: #37F728;font-weight: bold;')}">
 									<f:convertNumber pattern="###,###" currencySymbol="$"
 										type="currency" />
 								</h:outputText>

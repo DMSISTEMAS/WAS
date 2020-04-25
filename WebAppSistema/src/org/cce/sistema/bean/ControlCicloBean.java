@@ -79,7 +79,7 @@ public class ControlCicloBean implements Serializable {
 	public void actualizar() {
 		CicloRegDao cDao = new CicloRegDaoImp();
 		cDao.actualizar(ciclo1920);
-
+		ciclo1920 = new Bitacora();
 	}
 
 	public List<Bitacora> listaPorSemana() {
@@ -87,8 +87,9 @@ public class ControlCicloBean implements Serializable {
 		String datoHorario[];
 		datoHorario = idHorario.split("_");
 		String datoSemana[];
-		datoSemana= semana.split("_");
-		this.listaPorSemana = cDao.listarPorSemana(Integer.valueOf(datoHorario[1]), idLibro, Integer.valueOf(datoSemana[1]));
+		datoSemana = semana.split("_");
+		this.listaPorSemana = cDao.listarPorSemana(Integer.valueOf(datoHorario[1]), idLibro,
+				Integer.valueOf(datoSemana[1]));
 		return listaPorSemana;
 	}
 

@@ -111,7 +111,11 @@
 								<p:commandButton value=""
 									style="height: 28px; width: 28px; background-image: url('/img/edit.png') !important;
 									background-size: 26px; background-repeat: no-repeat"
-									title="Editar registro" />
+									title="Editar registro" oncomplete="PF('dlgEditar').show()"
+									update="frmEditar">
+									<f:setPropertyActionListener value="#{var}"
+										target="#{catequizado.catequizado}" />
+								</p:commandButton>
 							</p:column>
 
 							<p:column headerText="..." style="width: 3%">
@@ -238,6 +242,85 @@
 				</p:dialog>
 			</h:form>
 			<!--Diálogo para agregar-->
+
+			<!--Diálogo para editar-->
+			<h:form id="frmEditar">
+				<p:growl id="msgEditar" showDetail="true" showSummary="true" />
+				<p:dialog id="dialogoEditar"
+					header="Editar registro de: #{catequizado.catequizado.nombre} #{catequizado.catequizado.apellidoPaterno} #{catequizado.catequizado.apellidoMaterno}"
+					widgetVar="dlgEditar" resizable="true" showEffect="clip"
+					hideEffect="fold" style="font-size: 13px">
+					<p:panelGrid id="pnlEditar" columns="2">
+
+						<p:outputLabel value="Nombre" />
+						<p:inputText value="#{catequizado.catequizado.nombre}"
+							style="width: 300px" placeholder="Nombre" />
+
+						<p:outputLabel value="Apellido paterno" />
+						<p:inputText value="#{catequizado.catequizado.apellidoPaterno}"
+							style="width: 300px" placeholder="Apellido paterno" />
+
+						<p:outputLabel value="Apellido materno" />
+						<p:inputText value="#{catequizado.catequizado.apellidoMaterno}"
+							style="width: 300px" placeholder="Apellido materno" />
+
+						<p:outputLabel value="Dirección" />
+						<p:inputTextarea value="#{catequizado.catequizado.direccion}"
+							style="width: 300px" placeholder="Dirección" />
+
+						<p:outputLabel value="Teléfono" />
+						<p:inputText value="#{catequizado.catequizado.telefono}"
+							style="width: 200px" placeholder="Teléfono" />
+
+						<p:outputLabel value="Correo" />
+						<p:inputText value="#{catequizado.catequizado.correo}"
+							style="width: 300px" placeholder="Correo" />
+
+						<p:outputLabel value="Fecha de nacimiento" />
+						<p:calendar yearRange="1950:2025" effect="blind"
+							effectDuration="13000" pages="2" showOn="button"
+							style="width: 150px;"
+							value="#{catequizado.catequizado.fechaNacimiento}"
+							required="true" placeholder="Fecha de nacimiento"
+							pattern="yyyy-MM-dd" mask="true">
+						</p:calendar>
+
+						<p:outputLabel value="Fecha de bautismo" />
+						<p:calendar yearRange="1950:2025" effect="blind"
+							effectDuration="13000" pages="2" showOn="button"
+							style="width: 150px;"
+							value="#{catequizado.catequizado.fechaNacimiento}"
+							required="true" placeholder="Fecha de nacimiento"
+							pattern="yyyy-MM-dd" mask="true">
+						</p:calendar>
+
+						<p:outputLabel value="Lugar de Bautismo" />
+						<p:inputTextarea value="#{catequizado.catequizado.lugarBautismo}"
+							style="width: 300px" placeholder="Lugar de Bautismo" />
+
+						<p:outputLabel value="Nombre del Papá" />
+						<p:inputText value="#{catequizado.catequizado.nombrePapa}"
+							style="width: 300px" placeholder="Nombre del Papá" />
+
+						<p:outputLabel value="Nombre de la Mamá" />
+						<p:inputText value="#{catequizado.catequizado.nombreMama}"
+							style="width: 300px" placeholder="Nombre de la Mamá" />
+
+					</p:panelGrid>
+					<br></br>
+					<p:spacer height="50" width="470" />
+					<p:commandButton value=""
+						style="height:
+						50px; width: 50px; background-image:
+						url('/img/save.png') !important;
+									background-size: 50px; background-repeat:
+						no-repeat"
+						title="Actualizar registro"
+						actionListener="#{catequizado.actualizar()}"
+						oncomplete="PF('dlgEditar').hide()" update="frmPrincipal" />
+				</p:dialog>
+			</h:form>
+			<!--Diálogo para editar-->
 
 		</ui:define>
 

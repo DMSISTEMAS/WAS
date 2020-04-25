@@ -36,8 +36,6 @@ public class CatequizadoBean implements Serializable {
 		this.catequizado = catequizado;
 	}
 
-
-
 	public UploadedFile getFile() {
 		return file;
 	}
@@ -75,6 +73,12 @@ public class CatequizadoBean implements Serializable {
 		RequestContext.getCurrentInstance().update("frmPrincipal");
 		RequestContext.getCurrentInstance().execute("PF('dlgAgregar').hide()");
 		this.catequizado = new Catequizado();
+	}
+
+	public void actualizar() {
+		CatequizadoDao cDao = new CatequizadoDaoImp();
+		cDao.actualizar(catequizado);
+		catequizado = new Catequizado();
 	}
 
 }
