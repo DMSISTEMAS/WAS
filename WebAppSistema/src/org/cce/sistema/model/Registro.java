@@ -14,11 +14,12 @@ public class Registro implements java.io.Serializable {
 	private Horario horario;
 	private Libro libro;
 	private Parroquia parroquia;
-	private Long folioRecibo;
+	private Porcentaje porcentaje;
 	private Long costo;
-	private Integer faltas;
-	private String evaluacion;
 	private Date alta;
+	private String estado;
+	@SuppressWarnings("rawtypes")
+	private Set calificacions = new HashSet(0);
 	@SuppressWarnings("rawtypes")
 	private Set bitacoras = new HashSet(0);
 
@@ -27,7 +28,7 @@ public class Registro implements java.io.Serializable {
 
 	@SuppressWarnings("rawtypes")
 	public Registro(Catequista catequista, Catequizado catequizado, Ciclo ciclo, Horario horario, Libro libro,
-			Parroquia parroquia, Long folioRecibo, Long costo, Integer faltas, String evaluacion, Date alta,
+			Parroquia parroquia, Porcentaje porcentaje, Long costo, Date alta, String estado, Set calificacions,
 			Set bitacoras) {
 		this.catequista = catequista;
 		this.catequizado = catequizado;
@@ -35,11 +36,11 @@ public class Registro implements java.io.Serializable {
 		this.horario = horario;
 		this.libro = libro;
 		this.parroquia = parroquia;
-		this.folioRecibo = folioRecibo;
+		this.porcentaje = porcentaje;
 		this.costo = costo;
-		this.faltas = faltas;
-		this.evaluacion = evaluacion;
 		this.alta = alta;
+		this.estado = estado;
+		this.calificacions = calificacions;
 		this.bitacoras = bitacoras;
 	}
 
@@ -99,12 +100,12 @@ public class Registro implements java.io.Serializable {
 		this.parroquia = parroquia;
 	}
 
-	public Long getFolioRecibo() {
-		return this.folioRecibo;
+	public Porcentaje getPorcentaje() {
+		return this.porcentaje;
 	}
 
-	public void setFolioRecibo(Long folioRecibo) {
-		this.folioRecibo = folioRecibo;
+	public void setPorcentaje(Porcentaje porcentaje) {
+		this.porcentaje = porcentaje;
 	}
 
 	public Long getCosto() {
@@ -115,28 +116,30 @@ public class Registro implements java.io.Serializable {
 		this.costo = costo;
 	}
 
-	public Integer getFaltas() {
-		return this.faltas;
-	}
-
-	public void setFaltas(Integer faltas) {
-		this.faltas = faltas;
-	}
-
-	public String getEvaluacion() {
-		return this.evaluacion;
-	}
-
-	public void setEvaluacion(String evaluacion) {
-		this.evaluacion = evaluacion;
-	}
-
 	public Date getAlta() {
 		return this.alta;
 	}
 
 	public void setAlta(Date alta) {
 		this.alta = alta;
+	}
+
+	public String getEstado() {
+		return this.estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Set getCalificacions() {
+		return this.calificacions;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setCalificacions(Set calificacions) {
+		this.calificacions = calificacions;
 	}
 
 	@SuppressWarnings("rawtypes")

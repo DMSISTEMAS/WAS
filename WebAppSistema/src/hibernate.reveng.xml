@@ -2,16 +2,15 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<table-filter match-catalog="db_cce" match-name="bitacora" />
-	<table-filter match-catalog="db_cce"
-		match-name="catequista" />
-	<table-filter match-catalog="db_cce"
-		match-name="catequizado" />
-	<table-filter match-catalog="db_cce" match-name="ciclo" />
-	<table-filter match-catalog="db_cce" match-name="horario" />
-	<table-filter match-catalog="db_cce" match-name="libro" />
-	<table-filter match-catalog="db_cce"
-		match-name="parroquia" />
-	<table-filter match-catalog="db_cce" match-name="registro" />
-	<table-filter match-catalog="db_cce" match-name="usuario" />
+  <table-filter match-catalog="db_cce" match-name="bitacora"/>
+  <table-filter match-catalog="db_cce" match-name="calificacion"/>
+  <table-filter match-catalog="db_cce" match-name="catequista"/>
+  <table-filter match-catalog="db_cce" match-name="catequizado"/>
+  <table-filter match-catalog="db_cce" match-name="ciclo"/>
+  <table-filter match-catalog="db_cce" match-name="horario"/>
+  <table-filter match-catalog="db_cce" match-name="libro"/>
+  <table-filter match-catalog="db_cce" match-name="parroquia"/>
+  <table-filter match-catalog="db_cce" match-name="porcentaje"/>
+  <table-filter match-catalog="db_cce" match-name="registro"/>
+  <table-filter match-catalog="db_cce" match-name="usuario"/>
 </hibernate-reverse-engineering>

@@ -1,4 +1,5 @@
 package org.cce.sistema.model;
+// Generated 26 abr. 2020 22:22:28 by Hibernate Tools 5.3.15.Final
 
 import java.util.HashSet;
 import java.util.Set;

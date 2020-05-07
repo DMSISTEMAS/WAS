@@ -41,7 +41,8 @@ public class CicloControlDaoImp implements CicloControlDao {
 		try {
 			lista = session.createQuery("FROM Bitacora AS ciclo WHERE ciclo.registro.horario.idHorario='" + idHorario
 					+ "' " + "AND ciclo.registro.libro.idLibro='" + idLibro + "' AND semana='" + noSemana + "' "
-					+ "AND ciclo.registro.catequista.idCatequista='" + us.getIdCatequista() + "'").list();
+					+ "AND ciclo.registro.catequista.idCatequista='" + us.getIdCatequista()
+					+ "' AND ciclo.registro.catequizado.estado='Alta'").list();
 			t.commit();
 			session.close();
 		} catch (HibernateException e) {
@@ -58,8 +59,9 @@ public class CicloControlDaoImp implements CicloControlDao {
 		Session session = HibernateUtil.getSf().openSession();
 		Transaction t = session.beginTransaction();
 		try {
-			lista = session.createQuery(
-					"SELECT DISTINCT fecha|| '_' || semana FROM Bitacora WHERE registro.catequista='" + us.getIdCatequista() + "' ")
+			lista = session
+					.createQuery("SELECT DISTINCT fecha|| '_' || semana FROM Bitacora WHERE registro.catequista='"
+							+ us.getIdCatequista() + "' ")
 					.list();
 			t.commit();
 			session.close();

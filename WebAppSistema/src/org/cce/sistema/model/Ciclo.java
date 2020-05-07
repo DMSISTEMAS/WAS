@@ -15,7 +15,6 @@ public class Ciclo implements java.io.Serializable {
 	public Ciclo() {
 	}
 
-	@SuppressWarnings("rawtypes")
 	public Ciclo(String nombre, Boolean estatus, Set registros) {
 		this.nombre = nombre;
 		this.estatus = estatus;

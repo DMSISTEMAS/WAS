@@ -21,6 +21,9 @@ public class Catequizado implements java.io.Serializable {
 	private String nombreMama;
 	private Date fechaBautismo;
 	private String lugarBautismo;
+	private String estadoRegistro;
+	private String estado;
+	private String observaciones;
 	@SuppressWarnings("rawtypes")
 	private Set registros = new HashSet(0);
 
@@ -30,7 +33,8 @@ public class Catequizado implements java.io.Serializable {
 	@SuppressWarnings("rawtypes")
 	public Catequizado(String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, String telefono,
 			String correo, Date fechaNacimiento, Date fechaAlta, byte[] foto, String nombrePapa, String nombreMama,
-			Date fechaBautismo, String lugarBautismo, Set registros) {
+			Date fechaBautismo, String lugarBautismo, String estadoRegistro, String estado, String observaciones,
+			Set registros) {
 		this.nombre = nombre;
 		this.apellidoPaterno = apellidoPaterno;
 		this.apellidoMaterno = apellidoMaterno;
@@ -44,6 +48,9 @@ public class Catequizado implements java.io.Serializable {
 		this.nombreMama = nombreMama;
 		this.fechaBautismo = fechaBautismo;
 		this.lugarBautismo = lugarBautismo;
+		this.estadoRegistro = estadoRegistro;
+		this.estado = estado;
+		this.observaciones = observaciones;
 		this.registros = registros;
 	}
 
@@ -157,6 +164,30 @@ public class Catequizado implements java.io.Serializable {
 
 	public void setLugarBautismo(String lugarBautismo) {
 		this.lugarBautismo = lugarBautismo;
+	}
+
+	public String getEstadoRegistro() {
+		return this.estadoRegistro;
+	}
+
+	public void setEstadoRegistro(String estadoRegistro) {
+		this.estadoRegistro = estadoRegistro;
+	}
+
+	public String getEstado() {
+		return this.estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getObservaciones() {
+		return this.observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
 	}
 
 	@SuppressWarnings("rawtypes")
