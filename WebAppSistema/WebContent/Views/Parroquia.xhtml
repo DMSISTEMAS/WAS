@@ -81,7 +81,12 @@
 								<p:commandButton value=""
 									style="height: 28px; width: 28px; background-image: url('/img/edit.png') !important;
 									background-size: 26px; background-repeat: no-repeat"
-									title="Editar registro" />
+									oncomplete="PF('dlgEditar').show()"
+									update="frmEditar"
+									title="Editar registro" >
+									<f:setPropertyActionListener value="#{var}"
+										target="#{parroquia.parroquia}" />
+									</p:commandButton>
 							</p:column>
 
 							<p:column headerText="..." style="width: 4%">
@@ -124,7 +129,7 @@
 								<p:message for="ap" />
 							</p:inputText>
 
-							<p:outputLabel for="am" value="Decanano" />
+							<p:outputLabel for="am" value="Decanato" />
 							<p:inputText id="am" value="#{parroquia.parroquia.decanato}"
 								required="true" requiredMessage="Requiere apellido materno"
 								style="width: 100%">
@@ -150,6 +155,59 @@
 				</p:dialog>
 			</h:form>
 			<!--Diálogo para agregar-->
+			
+			<!-- INICIA FORMUALARIO PARA EDITAR -->
+			<h:form id="frmEditar">
+				<p:growl id="msgEditar" showDetail="true" showSummary="true" />
+				<p:dialog id="dialogoEditar"
+					header="Editar registro de: #{parroquia.parroquia.parroquia} #{parroquia.parroquia.presbitero}"
+					widgetVar="dlgEditar" resizable="true" showEffect="clip"
+					hideEffect="fold" width="450" style="font-size: 13px">
+					<p:panelGrid id="pnlEditar" columns="2">
+
+						<p:outputLabel for="nombre" value="Nombre de la Parroquia" />
+							<p:inputText id="nombre" value="#{parroquia.parroquia.parroquia}"
+								required="true"
+								requiredMessage="Requiere nombre de la Parroquia"
+								style="width: 100%">
+								<p:message for="nombre" />
+							</p:inputText>
+
+							<p:outputLabel for="ap" value="Diócesis" />
+							<p:inputText id="ap" value="#{parroquia.parroquia.diocesis}"
+								required="true" requiredMessage="Requiere nombre de la Diócesis"
+								style="width: 100%">
+								<p:message for="ap" />
+							</p:inputText>
+
+							<p:outputLabel for="am" value="Decanato" />
+							<p:inputText id="am" value="#{parroquia.parroquia.decanato}"
+								required="true" requiredMessage="Requiere apellido materno"
+								style="width: 100%">
+								<p:message for="am" />
+							</p:inputText>
+
+							<p:outputLabel for="dir" value="Nombre del Parroco" />
+							<p:inputText id="dir" value="#{parroquia.parroquia.presbitero}"
+								required="true" requiredMessage="Requiere nombre del Parroco"
+								style="width: 100%">
+								<p:message for="dir" />
+							</p:inputText>
+					</p:panelGrid>
+					<br></br>
+					<p:spacer height="50" width="370" />
+					<p:commandButton value=""
+						style="height:
+						50px; width: 50px; background-image:
+						url('/img/save.png') !important;
+									background-size: 50px; background-repeat:
+						no-repeat"
+						title="Actualizar registro"
+						actionListener="#{parroquia.actualizar()}"
+						oncomplete="PF('dlgEditar').hide()" update="frmPrincipal" />
+				</p:dialog>
+			</h:form>
+			<!-- TERMINA FORMUALARIO PARA EDITAR -->
 
 		</ui:define>
 

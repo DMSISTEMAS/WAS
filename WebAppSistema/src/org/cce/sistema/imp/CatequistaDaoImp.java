@@ -39,7 +39,8 @@ public class CatequistaDaoImp implements CatequistaDao {
 			session.beginTransaction();
 			session.save(catequista);
 			session.getTransaction().commit();
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro agregado"));
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro guardado con éxito"));
 		} catch (HibernateException e) {
 			System.err.println(e.getMessage());
 			session.getTransaction().rollback();
@@ -59,7 +60,8 @@ public class CatequistaDaoImp implements CatequistaDao {
 			session.beginTransaction();
 			session.update(catequista);
 			session.getTransaction().commit();
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro actualizado"));
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro actualizado con éxito"));
 		} catch (HibernateException e) {
 			System.err.println(e.getMessage());
 			session.getTransaction().rollback();
@@ -79,7 +81,8 @@ public class CatequistaDaoImp implements CatequistaDao {
 			session.beginTransaction();
 			session.delete(catequista);
 			session.getTransaction().commit();
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro borrado"));
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro borrado con éxito"));
 		} catch (HibernateException e) {
 			System.err.println(e.getMessage());
 			session.getTransaction().rollback();

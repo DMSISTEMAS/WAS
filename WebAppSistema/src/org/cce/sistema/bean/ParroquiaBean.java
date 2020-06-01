@@ -45,7 +45,12 @@ public class ParroquiaBean implements Serializable {
 		this.parroquia = new Parroquia();
 		RequestContext.getCurrentInstance().update("frmPrincipal");
 		RequestContext.getCurrentInstance().execute("PF('dlgAgregar').hide()");
+	}
 
+	public void actualizar() {
+		ParroquiaDao pDao = new ParroquiaDaoImp();
+		pDao.actualizar(parroquia);
+		parroquia = new Parroquia();
 	}
 
 }

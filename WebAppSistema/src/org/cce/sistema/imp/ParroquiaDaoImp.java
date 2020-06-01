@@ -2,6 +2,9 @@ package org.cce.sistema.imp;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import org.cce.sistema.dao.ParroquiaDao;
 import org.cce.sistema.model.Parroquia;
 import org.cce.sistema.util.HibernateUtil;
@@ -36,6 +39,8 @@ public class ParroquiaDaoImp implements ParroquiaDao {
 			session.beginTransaction();
 			session.save(parroquia);
 			session.getTransaction().commit();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro guardado con éxito"));
 		} catch (HibernateException e) {
 			System.err.println(e.getMessage());
 			session.getTransaction().rollback();
@@ -55,6 +60,8 @@ public class ParroquiaDaoImp implements ParroquiaDao {
 			session.beginTransaction();
 			session.update(parroquia);
 			session.getTransaction().commit();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro actualizado con éxito"));
 		} catch (HibernateException e) {
 			System.err.println(e.getMessage());
 			session.getTransaction().rollback();

@@ -2,6 +2,7 @@ package org.cce.sistema.imp;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.cce.sistema.dao.LibroDao;
@@ -40,6 +41,8 @@ public class LibroDaoImp implements LibroDao {
 			session.beginTransaction();
 			session.save(libro);
 			session.getTransaction().commit();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro guardado con éxito"));
 		} catch (HibernateException e) {
 			System.err.println(e.getMessage());
 			session.getTransaction().rollback();
@@ -59,6 +62,8 @@ public class LibroDaoImp implements LibroDao {
 			session.beginTransaction();
 			session.update(libro);
 			session.getTransaction().commit();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro actualizado con éxito"));
 		} catch (HibernateException e) {
 			System.err.println(e.getMessage());
 			session.getTransaction().rollback();

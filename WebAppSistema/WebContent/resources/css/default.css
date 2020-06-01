@@ -35,7 +35,7 @@ h3 {
     margin: 0px;
     padding: 0px;
     text-align: center;
-    color: #2e3436;
+    color: #f3f3f3;
 }
 
 a:link, a:visited {
@@ -51,9 +51,9 @@ a:link:hover, a:visited:hover  {
 }
 
 .ui-datatable-even{
-	background: #fef9e7;
+	background:  #d3d7cf;
 }
 
 .ui-datatable-odd{
-	background: #fbeee6;
+	background: #babdb6;
 }

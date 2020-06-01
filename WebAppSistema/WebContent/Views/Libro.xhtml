@@ -74,7 +74,11 @@
 								<p:commandButton value=""
 									style="height: 28px; width: 28px; background-image: url('/img/edit.png') !important;
 									background-size: 26px; background-repeat: no-repeat"
-									title="Editar registro" />
+									title="Editar registro" oncomplete="PF('dlgEditar').show()"
+									update="frmEditar">
+									<f:setPropertyActionListener value="#{var}"
+										target="#{libro.libro}" />
+								</p:commandButton>
 							</p:column>
 
 							<p:column headerText="..." style="width: 4%">
@@ -127,6 +131,46 @@
 				</p:dialog>
 			</h:form>
 			<!--Diálogo para agregar-->
+
+			<!-- INICIA FORMUALARIO PARA EDITAR -->
+			<h:form id="frmEditar">
+				<p:growl id="msgEditar" showDetail="true" showSummary="true" />
+				<p:dialog id="dialogoEditar"
+					header="Editar registro de: #{control.ciclo1920.registro.catequizado.nombre} #{control.ciclo1920.registro.catequizado.apellidoPaterno} #{control.ciclo1920.registro.catequizado.apellidoMaterno} / Fecha: #{control.ciclo1920.fecha}"
+					widgetVar="dlgEditar" resizable="true" showEffect="clip"
+					hideEffect="fold" width="450" style="font-size: 13px">
+					<p:panelGrid id="pnlEditar" columns="2">
+
+							<p:outputLabel for="nombre" value="Nombre del libro" />
+							<p:inputText id="nombre" value="#{libro.libro.nombre}"
+								required="true" requiredMessage="Requiere nombre del libro"
+								style="width: 100%">
+								<p:message for="nombre" />
+							</p:inputText>
+
+							<p:outputLabel for="ap" value="Descripción" />
+							<p:inputText id="ap" value="#{libro.libro.descripcion}"
+								required="true" requiredMessage="Requiere descripción del libro"
+								style="width: 100%">
+								<p:message for="ap" />
+							</p:inputText>
+							
+					</p:panelGrid>
+					<br></br>
+					<p:spacer height="50" width="370" />
+					<p:commandButton value=""
+						style="height:
+						50px; width: 50px; background-image:
+						url('/img/save.png') !important;
+									background-size: 50px; background-repeat:
+						no-repeat"
+						title="Actualizar registro"
+						actionListener="#{libro.actualizar()}"
+						oncomplete="PF('dlgEditar').hide()" update="frmPrincipal" />
+				</p:dialog>
+			</h:form>
+			<!-- TERMINA FORMUALARIO PARA EDITAR -->
+
 
 		</ui:define>
 

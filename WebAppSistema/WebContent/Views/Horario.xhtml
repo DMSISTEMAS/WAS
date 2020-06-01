@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<link
@@ -19,22 +20,21 @@
 		</ui:define>
 
 		<ui:define name="content">
-			<br></br>
-			<h3 style="font-family: 'Barlow', sans-serif;">ADMINISTRACIÓN DE
-				HORARIOS</h3>
-			<br></br>
+
+			<h3
+				style="font-family: 'Barlow', sans-serif; font-size: 18px; font-weight: bold; color: #2e3436">ADMINISTRACIÓN
+				DE HORARIOS</h3>
+
 			<!--Barra de tareas-->
 			<h:form>
 
 				<p:toolbar>
 					<f:facet name="left">
-						<br></br>
 						<p:commandButton value="" oncomplete="PF('dlgAgregar').show()"
 							style="height: 50px; width: 50px; background-image: url('/img/calendar.png') !important; 
 							background-size: 48px; background-repeat: no-repeat"
 							title="Agregar nuevo registro" />
-						<br></br>
-						<br></br>
+
 					</f:facet>
 
 					<f:facet name="right">
@@ -43,9 +43,10 @@
 
 				</p:toolbar>
 			</h:form>
-			<!--Barra de tareasl-->
+			<!--Barra de tareas-->
 			<br></br>
-			<h3 style="font-family: 'Barlow', sans-serif;">REGISTROS</h3>
+			<h3
+				style="font-family: 'Barlow', sans-serif; font-size: 18px; font-weight: bold; color: #2e3436">REGISTROS</h3>
 			<br></br>
 			<!--Formulario principal-->
 			<h:form id="frmPrincipal">
@@ -75,11 +76,19 @@
 								<h:outputText value="#{var.horaFin}" />
 							</p:column>
 
+							<p:column headerText="Ciclo">
+								<h:outputText value="#{var.nombre}" />
+							</p:column>
+
 							<p:column headerText="..." style="width: 4%">
 								<p:commandButton value=""
 									style="height: 28px; width: 28px; background-image: url('/img/edit.png') !important;
 									background-size: 26px; background-repeat: no-repeat"
-									title="Editar registro" />
+									title="Editar registro" oncomplete="PF('dlgEditar').show()"
+									update="frmEditar">
+									<f:setPropertyActionListener value="#{var}"
+										target="#{horario.horario}" />
+								</p:commandButton>
 							</p:column>
 
 							<p:column headerText="..." style="width: 4%">
@@ -106,7 +115,7 @@
 
 
 						<p:messages id="msg" showDetail="true" closable="true" />
-						<p:panelGrid id="panelAgregar" columns="6" style="margin: 0 auto">
+						<p:panelGrid id="panelAgregar" columns="2" style="margin: 0 auto">
 
 							<p:outputLabel for="dia" value="Día" />
 							<p:selectOneMenu id="dia" value="#{horario.horario.dia}"
@@ -136,6 +145,13 @@
 								required="true" requiredMessage="Requiere horario final">
 								<p:message for="ff" />
 							</b:dateTimePicker>
+
+							<p:outputLabel for="aa" value="Ciclo" />
+							<p:inputText id="aa" value="#{horario.horario.nombre}"
+								placeholder="Coloca el año actual" required="true"
+								requiredMessage="Requiere año actual">
+								<p:message for="aa" />
+							</p:inputText>
 						</p:panelGrid>
 						<p:spacer height="30" width="850" />
 						<p:commandButton id="track"
@@ -149,6 +165,66 @@
 				</p:dialog>
 			</h:form>
 			<!--Diálogo para agregar-->
+
+			<!-- INICIA FORMUALARIO PARA EDITAR -->
+			<h:form id="frmEditar">
+				<p:growl id="msgEditar" showDetail="true" showSummary="true" />
+				<p:dialog id="dialogoEditar"
+					header="Editar registro de: #{control.ciclo1920.registro.catequizado.nombre} #{control.ciclo1920.registro.catequizado.apellidoPaterno} #{control.ciclo1920.registro.catequizado.apellidoMaterno} / Fecha: #{control.ciclo1920.fecha}"
+					widgetVar="dlgEditar" resizable="true" showEffect="clip"
+					hideEffect="fold" width="450" style="font-size: 13px">
+					<p:panelGrid id="pnlEditar" columns="2">
+
+						<p:outputLabel for="diaA" value="Día" />
+						<p:selectOneMenu id="diaA" value="#{horario.horario.dia}"
+							style="width:225px" required="true"
+							requiredMessage="Se requiere día">
+							<f:selectItem itemLabel="Seleccione día" itemValue="" />
+							<f:selectItem itemLabel="Lunes" itemValue="Lunes" />
+							<f:selectItem itemLabel="Martes" itemValue="Martes" />
+							<f:selectItem itemLabel="Miércoles" itemValue="Miércoles" />
+							<f:selectItem itemLabel="Jueves" itemValue="Jueves" />
+							<f:selectItem itemLabel="Viernes" itemValue="Viernes" />
+							<f:selectItem itemLabel="Sábado" itemValue="Sábado" />
+							<f:selectItem itemLabel="Domingo" itemValue="Domingo" />
+							<p:message for="diaA" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="fiA" value="Hora inicial" />
+						<b:dateTimePicker id="fiA" value="#{horario.horario.horaInicio}"
+							disabled="false" show-time="true" show-date="false"
+							required="true" requiredMessage="Requiere horario inicial">
+							<p:message for="fiA" />
+						</b:dateTimePicker>
+
+						<p:outputLabel for="ffA" value="Hora final" />
+						<b:dateTimePicker id="ffA" value="#{horario.horario.horaFin}"
+							disabled="false" show-time="true" show-date="false"
+							required="true" requiredMessage="Requiere horario final">
+							<p:message for="ffA" />
+						</b:dateTimePicker>
+
+						<p:outputLabel for="aaA" value="Año actual" />
+						<p:inputText id="aaA" value="#{horario.horario.nombre}"
+							placeholder="Coloca el año actual" required="true"
+							requiredMessage="Requiere año actual">
+							<p:message for="aaA" />
+						</p:inputText>
+					</p:panelGrid>
+					<br></br>
+					<p:spacer height="50" width="370" />
+					<p:commandButton value=""
+						style="height:
+						50px; width: 50px; background-image:
+						url('/img/save.png') !important;
+									background-size: 50px; background-repeat:
+						no-repeat"
+						title="Actualizar registro"
+						actionListener="#{horario.actualizar()}"
+						oncomplete="PF('dlgEditar').hide()" update="frmPrincipal" />
+				</p:dialog>
+			</h:form>
+			<!-- TERMINA FORMUALARIO PARA EDITAR -->
 
 		</ui:define>
 

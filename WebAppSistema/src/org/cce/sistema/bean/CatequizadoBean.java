@@ -5,8 +5,10 @@ import java.io.Serializable;
 import java.nio.file.Path;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.servlet.ServletContext;
 
 import org.cce.sistema.dao.CatequizadoDao;
 import org.cce.sistema.imp.CatequizadoDaoImp;
@@ -79,6 +81,15 @@ public class CatequizadoBean implements Serializable {
 		CatequizadoDao cDao = new CatequizadoDaoImp();
 		cDao.actualizar(catequizado);
 		catequizado = new Catequizado();
+	}
+	
+	public void imprimirDetalle(String idReg) {
+		DetalleAlumno credencial = new DetalleAlumno();
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		ServletContext servletContext = (ServletContext) facesContext.getExternalContext().getContext();
+		String ruta = servletContext.getRealPath("/QR/detalleAlumno.jasper");
+		credencial.getCredencial(ruta, idReg);
+		FacesContext.getCurrentInstance().responseComplete();
 	}
 
 }

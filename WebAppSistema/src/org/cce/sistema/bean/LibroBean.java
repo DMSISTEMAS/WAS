@@ -47,4 +47,10 @@ public class LibroBean implements Serializable {
 		RequestContext.getCurrentInstance().execute("PF('dlgAgregar').hide()");
 	}
 
+	public void actualizar() {
+		LibroDao lDao = new LibroDaoImp();
+		lDao.actualizar(libro);
+		libro = new Libro();
+	}
+
 }

@@ -18,6 +18,7 @@ public class HorarioBean implements Serializable {
 
 	private Horario horario;
 	private List<Horario> listaHorario;
+
 	public HorarioBean() {
 		this.horario = new Horario();
 	}
@@ -32,10 +33,9 @@ public class HorarioBean implements Serializable {
 
 	public List<Horario> getListaHorario() {
 		HorarioDao hDao = new HorarioDaoImp();
-		listaHorario=hDao.lista();
+		listaHorario = hDao.lista();
 		return listaHorario;
 	}
-	
 
 	public void guardar() {
 		HorarioDao hDao = new HorarioDaoImp();
@@ -43,6 +43,12 @@ public class HorarioBean implements Serializable {
 		RequestContext.getCurrentInstance().update("frmPrincipal");
 		RequestContext.getCurrentInstance().execute("PF('dlgAgregar').hide()");
 		this.horario = new Horario();
+	}
+
+	public void actualizar() {
+		HorarioDao hDao = new HorarioDaoImp();
+		hDao.actualizar(horario);
+		horario = new Horario();
 	}
 
 }

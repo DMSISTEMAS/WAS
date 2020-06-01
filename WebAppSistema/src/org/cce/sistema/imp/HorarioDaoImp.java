@@ -2,6 +2,7 @@ package org.cce.sistema.imp;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.cce.sistema.dao.HorarioDao;
@@ -41,6 +42,8 @@ public class HorarioDaoImp implements HorarioDao {
 			session.beginTransaction();
 			session.save(horario);
 			session.getTransaction().commit();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro guardado con éxito"));
 		} catch (HibernateException e) {
 			System.err.println(e.getMessage());
 			session.getTransaction().rollback();
@@ -60,6 +63,8 @@ public class HorarioDaoImp implements HorarioDao {
 			session.beginTransaction();
 			session.update(horario);
 			session.getTransaction().commit();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro actualizado con éxito"));
 		} catch (HibernateException e) {
 			System.err.println(e.getMessage());
 			session.getTransaction().rollback();
@@ -79,6 +84,8 @@ public class HorarioDaoImp implements HorarioDao {
 			session.beginTransaction();
 			session.delete(horario);
 			session.getTransaction().commit();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "CCE", "Registro borrado con éxito"));
 		} catch (HibernateException e) {
 			System.err.println(e.getMessage());
 			session.getTransaction().rollback();

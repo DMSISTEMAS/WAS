@@ -63,16 +63,20 @@
 							currentPageReportTemplate="Registros #{catequizado.listaCatequizado.size()}"
 							paginatorAlwaysVisible="true" emptyMessage="No hay registros">
 
+							<p:column headerText="Nombre">
+								<h:outputText value="#{var.idCatequizado}" />
+							</p:column>
+
 							<p:column filterBy="#{var.nombre}" sortBy="#{var.nombre}"
 								headerText="Nombre">
 								<h:outputText value="#{var.nombre}" />
 							</p:column>
 
-							<p:column headerText="Apellido paterno">
+							<p:column headerText="Ap. Paterno">
 								<h:outputText value="#{var.apellidoPaterno}" />
 							</p:column>
 
-							<p:column headerText="Apellido materno">
+							<p:column headerText="Ap. Materno">
 								<h:outputText value="#{var.apellidoMaterno}" />
 							</p:column>
 
@@ -84,43 +88,11 @@
 								<h:outputText value="#{var.telefono}" />
 							</p:column>
 
-							<p:column headerText="Correo">
-								<h:outputText value="#{var.correo}" />
-							</p:column>
-
-							<p:column headerText="Fecha de nacimiento">
+							<p:column headerText="Fec. Nac.">
 								<h:outputText value="#{var.fechaNacimiento}" />
 							</p:column>
 
-							<p:column headerText="Fecha de Bautismo">
-								<h:outputText value="#{var.fechaBautismo}" />
-							</p:column>
-
-							<p:column headerText="Lugar de Bautismo">
-								<h:outputText value="#{var.lugarBautismo}" />
-							</p:column>
-
-							<p:column headerText="Nombre del Papá">
-								<h:outputText value="#{var.nombrePapa}" />
-							</p:column>
-
-							<p:column headerText="Nombre de la Mamá">
-								<h:outputText value="#{var.nombreMama}" />
-							</p:column>
-
-							<p:column headerText="Estatus">
-								<h:outputText value="#{var.estado}" />
-							</p:column>
-
-							<p:column headerText="Libro actual">
-								<h:outputText value="#{var.estadoRegistro}" />
-							</p:column>
-
-							<p:column headerText="Observaciones">
-								<h:outputText value="#{var.observaciones}" />
-							</p:column>
-
-							<p:column headerText="..." style="width: 2%">
+							<p:column headerText="Editar" style="width: 4%">
 								<p:commandButton value=""
 									style="height: 28px; width: 28px; background-image: url('/img/edit.png') !important;
 									background-size: 26px; background-repeat: no-repeat"
@@ -131,12 +103,22 @@
 								</p:commandButton>
 							</p:column>
 
-							<p:column headerText="..." style="width: 2%">
+							<p:column headerText="Detalle" style="width: 4%">
+								<h:commandLink value="" target="_blank"
+									actionListener="#{catequizado.imprimirDetalle(var.idCatequizado)}">
+									<h:graphicImage value="/img/detalle.png"
+										style="height: 28px; width: 28px;" />
+								</h:commandLink>
+							</p:column>
+
+							<p:column headerText="Borrar" style="width: 4%">
 								<p:commandButton value=""
 									style="height: 28px; width: 28px; background-image: url('/img/delete.png') !important;
 									background-size: 26px; background-repeat: no-repeat"
 									title="Borrar registro" />
 							</p:column>
+
+
 						</p:dataTable>
 					</p:layoutUnit>
 				</p:panel>
@@ -319,6 +301,10 @@
 						<p:inputText value="#{catequizado.catequizado.nombreMama}"
 							style="width: 300px" placeholder="Nombre de la Mamá" />
 
+						<p:outputLabel value="Observaciones" />
+						<p:inputTextarea value="#{catequizado.catequizado.observaciones}"
+							style="width: 300px" placeholder="Observaciones" />
+
 					</p:panelGrid>
 					<br></br>
 					<p:spacer height="50" width="470" />
@@ -334,6 +320,7 @@
 				</p:dialog>
 			</h:form>
 			<!--Diálogo para editar-->
+
 
 		</ui:define>
 

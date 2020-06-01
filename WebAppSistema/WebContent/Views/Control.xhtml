@@ -93,6 +93,7 @@
 				CF=Catequesis familiar, CE=Calificación Extra, O=Observaciones,
 				J=Justificante, L=Limpieza</h3>
 			<br></br>
+			<!-- INICIA FORMUALARIO PRINCIPAL -->
 			<h:form id="frmPrincipal">
 				<p:growl id="msg" showDetail="true" showSummary="true" />
 				<p:panel id="pnl" header=""
@@ -199,7 +200,9 @@
 					</p:layoutUnit>
 				</p:panel>
 			</h:form>
-
+			<!-- TERMINA FORMULARIO PRINCIPAL -->
+			
+			<!-- INICIA FORMUALARIO PARA EDITAR -->
 			<h:form id="frmEditar">
 				<p:growl id="msgEditar" showDetail="true" showSummary="true" />
 				<p:dialog id="dialogoEditar"
@@ -260,7 +263,7 @@
 						oncomplete="PF('dlgEditar').hide()" update="frmPrincipal" />
 				</p:dialog>
 			</h:form>
-
+			<!-- TERMINA FORMUALARIO PARA EDITAR -->
 		</ui:define>
 
 
