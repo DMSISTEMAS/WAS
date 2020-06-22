@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 21-06-2020 a las 21:39:28
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.1.32
+-- Host: localhost
+-- Generation Time: Jun 23, 2020 at 12:18 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `db_cce`
+-- Database: `db_cce`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `bautismo`
+-- Table structure for table `bautismo`
 --
 
 CREATE TABLE `bautismo` (
@@ -37,7 +36,7 @@ CREATE TABLE `bautismo` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `bitacora`
+-- Table structure for table `bitacora`
 --
 
 CREATE TABLE `bitacora` (
@@ -45,12 +44,12 @@ CREATE TABLE `bitacora` (
   `idRegistro` int(11) DEFAULT NULL,
   `semana` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
-  `puntualidad` varchar(25) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `asistencia` varchar(25) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `conducta` varchar(25) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `misa` varchar(25) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `tarea` varchar(25) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `extra` varchar(25) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `puntualidad` decimal(10,0) DEFAULT NULL,
+  `asistencia` decimal(10,0) DEFAULT NULL,
+  `conducta` decimal(10,0) DEFAULT NULL,
+  `misa` decimal(10,0) DEFAULT NULL,
+  `tarea` decimal(10,0) DEFAULT NULL,
+  `extra` decimal(10,0) DEFAULT NULL,
   `observaciones` varchar(500) COLLATE latin1_spanish_ci DEFAULT NULL,
   `ruta` varchar(200) COLLATE latin1_spanish_ci DEFAULT NULL,
   `justificante` varchar(25) COLLATE latin1_spanish_ci DEFAULT NULL,
@@ -61,7 +60,7 @@ CREATE TABLE `bitacora` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `bitacora`
+-- Dumping data for table `bitacora`
 --
 
 INSERT INTO `bitacora` (`idCiclo`, `idRegistro`, `semana`, `fecha`, `puntualidad`, `asistencia`, `conducta`, `misa`, `tarea`, `extra`, `observaciones`, `ruta`, `justificante`, `estatus`, `aseo`, `catequesisFamiliar`, `misaSalida`) VALUES
@@ -228,7 +227,7 @@ INSERT INTO `bitacora` (`idCiclo`, `idRegistro`, `semana`, `fecha`, `puntualidad
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `calificacion`
+-- Table structure for table `calificacion`
 --
 
 CREATE TABLE `calificacion` (
@@ -248,7 +247,7 @@ CREATE TABLE `calificacion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `catequista`
+-- Table structure for table `catequista`
 --
 
 CREATE TABLE `catequista` (
@@ -263,7 +262,7 @@ CREATE TABLE `catequista` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `catequista`
+-- Dumping data for table `catequista`
 --
 
 INSERT INTO `catequista` (`idCatequista`, `nombre`, `apellidoPaterno`, `apellidoMaterno`, `direccion`, `telefono`, `fechaNacimiento`, `foto`) VALUES
@@ -273,7 +272,7 @@ INSERT INTO `catequista` (`idCatequista`, `nombre`, `apellidoPaterno`, `apellido
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `catequizado`
+-- Table structure for table `catequizado`
 --
 
 CREATE TABLE `catequizado` (
@@ -302,7 +301,7 @@ CREATE TABLE `catequizado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `catequizado`
+-- Dumping data for table `catequizado`
 --
 
 INSERT INTO `catequizado` (`idCatequizado`, `nombre`, `apellidoPaterno`, `apellidoMaterno`, `direccion`, `telefono`, `correo`, `fechaNacimiento`, `fechaAlta`, `foto`, `nombrePapa`, `nombreMama`, `fechaBautismo`, `lugarBautismo`, `estadoRegistro`, `estado`, `observaciones`, `idDireccion`, `idCodigo`, `idMunicipio`, `idBautismo`, `idNumero`) VALUES
@@ -346,7 +345,7 @@ INSERT INTO `catequizado` (`idCatequizado`, `nombre`, `apellidoPaterno`, `apelli
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ciclo`
+-- Table structure for table `ciclo`
 --
 
 CREATE TABLE `ciclo` (
@@ -356,7 +355,7 @@ CREATE TABLE `ciclo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `ciclo`
+-- Dumping data for table `ciclo`
 --
 
 INSERT INTO `ciclo` (`idCiclo`, `nombre`, `estatus`) VALUES
@@ -367,7 +366,7 @@ INSERT INTO `ciclo` (`idCiclo`, `nombre`, `estatus`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `codigo`
+-- Table structure for table `codigo`
 --
 
 CREATE TABLE `codigo` (
@@ -379,7 +378,7 @@ CREATE TABLE `codigo` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `direccion`
+-- Table structure for table `direccion`
 --
 
 CREATE TABLE `direccion` (
@@ -390,7 +389,7 @@ CREATE TABLE `direccion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `horario`
+-- Table structure for table `horario`
 --
 
 CREATE TABLE `horario` (
@@ -404,7 +403,7 @@ CREATE TABLE `horario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `horario`
+-- Dumping data for table `horario`
 --
 
 INSERT INTO `horario` (`idHorario`, `dia`, `horaInicio`, `horaFin`, `inicioCiclo`, `nombre`, `estatus`) VALUES
@@ -416,7 +415,7 @@ INSERT INTO `horario` (`idHorario`, `dia`, `horaInicio`, `horaFin`, `inicioCiclo
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `libro`
+-- Table structure for table `libro`
 --
 
 CREATE TABLE `libro` (
@@ -426,7 +425,7 @@ CREATE TABLE `libro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `libro`
+-- Dumping data for table `libro`
 --
 
 INSERT INTO `libro` (`idLibro`, `nombre`, `descripcion`) VALUES
@@ -443,7 +442,7 @@ INSERT INTO `libro` (`idLibro`, `nombre`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `municipio`
+-- Table structure for table `municipio`
 --
 
 CREATE TABLE `municipio` (
@@ -454,7 +453,7 @@ CREATE TABLE `municipio` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `numero`
+-- Table structure for table `numero`
 --
 
 CREATE TABLE `numero` (
@@ -465,7 +464,7 @@ CREATE TABLE `numero` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `parroquia`
+-- Table structure for table `parroquia`
 --
 
 CREATE TABLE `parroquia` (
@@ -478,7 +477,7 @@ CREATE TABLE `parroquia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `parroquia`
+-- Dumping data for table `parroquia`
 --
 
 INSERT INTO `parroquia` (`idParroquia`, `diocesis`, `decanato`, `parroquia`, `presbitero`, `logo`) VALUES
@@ -487,7 +486,7 @@ INSERT INTO `parroquia` (`idParroquia`, `diocesis`, `decanato`, `parroquia`, `pr
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `porcentaje`
+-- Table structure for table `porcentaje`
 --
 
 CREATE TABLE `porcentaje` (
@@ -504,7 +503,7 @@ CREATE TABLE `porcentaje` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `registro`
+-- Table structure for table `registro`
 --
 
 CREATE TABLE `registro` (
@@ -522,7 +521,7 @@ CREATE TABLE `registro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `registro`
+-- Dumping data for table `registro`
 --
 
 INSERT INTO `registro` (`idRegistro`, `idCatequizado`, `idLibro`, `idCatequista`, `idHorario`, `costo`, `idParroquia`, `alta`, `idCiclo`, `estado`, `idPorcentaje`) VALUES
@@ -533,7 +532,7 @@ INSERT INTO `registro` (`idRegistro`, `idCatequizado`, `idLibro`, `idCatequista`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -548,44 +547,44 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`idUsuario`, `nombre`, `nickname`, `contrasena`, `fechaAlta`, `estado`, `perfil`, `idCatequista`) VALUES
 (1, 'Mario Arias', 'admin', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', '2019-10-30 17:30:01', b'1', 'Administrador', 1);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `bautismo`
+-- Indexes for table `bautismo`
 --
 ALTER TABLE `bautismo`
   ADD PRIMARY KEY (`idBautismo`);
 
 --
--- Indices de la tabla `bitacora`
+-- Indexes for table `bitacora`
 --
 ALTER TABLE `bitacora`
   ADD PRIMARY KEY (`idCiclo`),
   ADD KEY `bitacora_registro_idRegistro_fk` (`idRegistro`);
 
 --
--- Indices de la tabla `calificacion`
+-- Indexes for table `calificacion`
 --
 ALTER TABLE `calificacion`
   ADD PRIMARY KEY (`idCalificacion`),
   ADD KEY `calificacion_registro_idRegistro_fk` (`idRegistro`);
 
 --
--- Indices de la tabla `catequista`
+-- Indexes for table `catequista`
 --
 ALTER TABLE `catequista`
   ADD PRIMARY KEY (`idCatequista`);
 
 --
--- Indices de la tabla `catequizado`
+-- Indexes for table `catequizado`
 --
 ALTER TABLE `catequizado`
   ADD PRIMARY KEY (`idCatequizado`),
@@ -596,61 +595,61 @@ ALTER TABLE `catequizado`
   ADD KEY `catequizado_numero_idNumero_fk` (`idNumero`);
 
 --
--- Indices de la tabla `ciclo`
+-- Indexes for table `ciclo`
 --
 ALTER TABLE `ciclo`
   ADD PRIMARY KEY (`idCiclo`);
 
 --
--- Indices de la tabla `codigo`
+-- Indexes for table `codigo`
 --
 ALTER TABLE `codigo`
   ADD PRIMARY KEY (`idCodigo`);
 
 --
--- Indices de la tabla `direccion`
+-- Indexes for table `direccion`
 --
 ALTER TABLE `direccion`
   ADD PRIMARY KEY (`idDireccion`);
 
 --
--- Indices de la tabla `horario`
+-- Indexes for table `horario`
 --
 ALTER TABLE `horario`
   ADD PRIMARY KEY (`idHorario`);
 
 --
--- Indices de la tabla `libro`
+-- Indexes for table `libro`
 --
 ALTER TABLE `libro`
   ADD PRIMARY KEY (`idLibro`);
 
 --
--- Indices de la tabla `municipio`
+-- Indexes for table `municipio`
 --
 ALTER TABLE `municipio`
   ADD PRIMARY KEY (`idMunicipio`);
 
 --
--- Indices de la tabla `numero`
+-- Indexes for table `numero`
 --
 ALTER TABLE `numero`
   ADD PRIMARY KEY (`idNumero`);
 
 --
--- Indices de la tabla `parroquia`
+-- Indexes for table `parroquia`
 --
 ALTER TABLE `parroquia`
   ADD PRIMARY KEY (`idParroquia`);
 
 --
--- Indices de la tabla `porcentaje`
+-- Indexes for table `porcentaje`
 --
 ALTER TABLE `porcentaje`
   ADD PRIMARY KEY (`idPorcentaje`);
 
 --
--- Indices de la tabla `registro`
+-- Indexes for table `registro`
 --
 ALTER TABLE `registro`
   ADD PRIMARY KEY (`idRegistro`),
@@ -663,129 +662,129 @@ ALTER TABLE `registro`
   ADD KEY `registro_porcentaje_idPorcentaje_fk` (`idPorcentaje`);
 
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idUsuario`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `bautismo`
+-- AUTO_INCREMENT for table `bautismo`
 --
 ALTER TABLE `bautismo`
   MODIFY `idBautismo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `bitacora`
+-- AUTO_INCREMENT for table `bitacora`
 --
 ALTER TABLE `bitacora`
   MODIFY `idCiclo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
 
 --
--- AUTO_INCREMENT de la tabla `calificacion`
+-- AUTO_INCREMENT for table `calificacion`
 --
 ALTER TABLE `calificacion`
   MODIFY `idCalificacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `catequista`
+-- AUTO_INCREMENT for table `catequista`
 --
 ALTER TABLE `catequista`
   MODIFY `idCatequista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `catequizado`
+-- AUTO_INCREMENT for table `catequizado`
 --
 ALTER TABLE `catequizado`
   MODIFY `idCatequizado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- AUTO_INCREMENT de la tabla `ciclo`
+-- AUTO_INCREMENT for table `ciclo`
 --
 ALTER TABLE `ciclo`
   MODIFY `idCiclo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `codigo`
+-- AUTO_INCREMENT for table `codigo`
 --
 ALTER TABLE `codigo`
   MODIFY `idCodigo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `direccion`
+-- AUTO_INCREMENT for table `direccion`
 --
 ALTER TABLE `direccion`
   MODIFY `idDireccion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `horario`
+-- AUTO_INCREMENT for table `horario`
 --
 ALTER TABLE `horario`
   MODIFY `idHorario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `libro`
+-- AUTO_INCREMENT for table `libro`
 --
 ALTER TABLE `libro`
   MODIFY `idLibro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT de la tabla `municipio`
+-- AUTO_INCREMENT for table `municipio`
 --
 ALTER TABLE `municipio`
   MODIFY `idMunicipio` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `numero`
+-- AUTO_INCREMENT for table `numero`
 --
 ALTER TABLE `numero`
   MODIFY `idNumero` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `parroquia`
+-- AUTO_INCREMENT for table `parroquia`
 --
 ALTER TABLE `parroquia`
   MODIFY `idParroquia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `porcentaje`
+-- AUTO_INCREMENT for table `porcentaje`
 --
 ALTER TABLE `porcentaje`
   MODIFY `idPorcentaje` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `registro`
+-- AUTO_INCREMENT for table `registro`
 --
 ALTER TABLE `registro`
   MODIFY `idRegistro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `bitacora`
+-- Constraints for table `bitacora`
 --
 ALTER TABLE `bitacora`
   ADD CONSTRAINT `bitacora_registro_idRegistro_fk` FOREIGN KEY (`idRegistro`) REFERENCES `registro` (`idRegistro`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `calificacion`
+-- Constraints for table `calificacion`
 --
 ALTER TABLE `calificacion`
   ADD CONSTRAINT `calificacion_registro_idRegistro_fk` FOREIGN KEY (`idRegistro`) REFERENCES `registro` (`idRegistro`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
--- Filtros para la tabla `catequizado`
+-- Constraints for table `catequizado`
 --
 ALTER TABLE `catequizado`
   ADD CONSTRAINT `catequizado_bautismo_idBautismo_fk` FOREIGN KEY (`idBautismo`) REFERENCES `bautismo` (`idBautismo`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -795,7 +794,7 @@ ALTER TABLE `catequizado`
   ADD CONSTRAINT `catequizado_numero_idNumero_fk` FOREIGN KEY (`idNumero`) REFERENCES `numero` (`idNumero`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `registro`
+-- Constraints for table `registro`
 --
 ALTER TABLE `registro`
   ADD CONSTRAINT `registro_catequista_idCatequista_fk` FOREIGN KEY (`idCatequista`) REFERENCES `catequista` (`idCatequista`) ON UPDATE CASCADE,
