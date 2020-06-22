@@ -1,52 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 26 abr. 2020 22:22:29 by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping auto-import="true"
-	default-access="property" default-cascade="none" default-lazy="true">
-	<class catalog="db_cce" dynamic-insert="false"
-		dynamic-update="false" mutable="true"
-		name="org.cce.sistema.model.Porcentaje" optimistic-lock="version"
-		polymorphism="implicit" select-before-update="false"
-		table="porcentaje">
-		<id name="idPorcentaje" type="java.lang.Integer">
-			<column name="idPorcentaje" />
-			<generator class="identity" />
-		</id>
-		<property generated="never" lazy="false" name="misa"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="misa" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="tareas"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="tareas" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="extras"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="extras" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="catequesis"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="catequesis" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="asistencia"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="asistencia" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="evaluacion"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="evaluacion" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="descricpion"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="100" name="descricpion" />
-		</property>
-		<set fetch="select" inverse="true" lazy="true" mutable="true"
-			name="registros" optimistic-lock="true" sort="unsorted"
-			table="registro">
-			<key on-delete="noaction">
-				<column name="idPorcentaje" />
-			</key>
-			<one-to-many class="org.cce.sistema.model.Registro"
-				not-found="exception" />
-		</set>
-	</class>
+<!-- Generated 22/06/2020 11:08:57 AM by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_cce" dynamic-insert="false" dynamic-update="false" mutable="true" name="org.cce.sistema.model.Porcentaje" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="porcentaje">
+        <id name="idPorcentaje" type="java.lang.Integer">
+            <column name="idPorcentaje"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="misa" optimistic-lock="true" type="java.lang.Long" unique="false">
+            <column name="misa" precision="10" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="tareas" optimistic-lock="true" type="java.lang.Long" unique="false">
+            <column name="tareas" precision="10" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="extras" optimistic-lock="true" type="java.lang.Long" unique="false">
+            <column name="extras" precision="10" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="catequesis" optimistic-lock="true" type="java.lang.Long" unique="false">
+            <column name="catequesis" precision="10" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="asistencia" optimistic-lock="true" type="java.lang.Long" unique="false">
+            <column name="asistencia" precision="10" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="evaluacion" optimistic-lock="true" type="java.lang.Long" unique="false">
+            <column name="evaluacion" precision="10" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="descricpion" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="descricpion"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="registros" optimistic-lock="true" sort="unsorted" table="registro">
+            <key on-delete="noaction">
+                <column name="idPorcentaje"/>
+            </key>
+            <one-to-many class="org.cce.sistema.model.Registro" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
 </hibernate-mapping>

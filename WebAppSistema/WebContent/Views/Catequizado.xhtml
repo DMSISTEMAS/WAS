@@ -80,10 +80,6 @@
 								<h:outputText value="#{var.apellidoMaterno}" />
 							</p:column>
 
-							<p:column headerText="Dirección">
-								<h:outputText value="#{var.direccion}" />
-							</p:column>
-
 							<p:column headerText="Teléfono">
 								<h:outputText value="#{var.telefono}" />
 							</p:column>
@@ -160,12 +156,6 @@
 								<p:message for="am" />
 							</p:inputText>
 
-							<p:outputLabel for="dir" value="Dirección" />
-							<p:inputTextarea id="dir" style="width: 300px"
-								value="#{catequizado.catequizado.direccion}" required="true"
-								requiredMessage="Requiere dirección" placeholder="Dirección">
-								<p:message for="dir" />
-							</p:inputTextarea>
 
 							<p:outputLabel for="tel" value="Teléfono" />
 							<p:inputText id="tel" style="width: 200px"
@@ -259,9 +249,6 @@
 						<p:inputText value="#{catequizado.catequizado.apellidoMaterno}"
 							style="width: 300px" placeholder="Apellido materno" />
 
-						<p:outputLabel value="Dirección" />
-						<p:inputTextarea value="#{catequizado.catequizado.direccion}"
-							style="width: 300px" placeholder="Dirección" />
 
 						<p:outputLabel value="Teléfono" />
 						<p:inputText value="#{catequizado.catequizado.telefono}"

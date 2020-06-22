@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-	<session-factory>
-		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
-		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_cce?serverTimezone=UTC</property>
-<!-- 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_cce?useUnicode=true&amp;characterEncoding=utf-8?serverTimezone=UTC</property> -->
-		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
-		<property name="hibernate.search.autoregister_listeners">true</property>
-		<property name="hibernate.validator.apply_to_ddl">false</property>
-		<property name="hibernate.format_sql">true</property>
-		<property name="hibernate.current_session_context_class">thread</property>
-		<property name="hibernate.enable_lazy_load_no_trans">true</property>
-		<mapping resource="org/cce/sistema/model/Calificacion.hbm.xml" />
-		<mapping resource="org/cce/sistema/model/Bitacora.hbm.xml" />
-		<mapping resource="org/cce/sistema/model/Parroquia.hbm.xml" />
-		<mapping resource="org/cce/sistema/model/Registro.hbm.xml" />
-		<mapping resource="org/cce/sistema/model/Catequizado.hbm.xml" />
-		<mapping resource="org/cce/sistema/model/Ciclo.hbm.xml" />
-		<mapping resource="org/cce/sistema/model/Libro.hbm.xml" />
-		<mapping resource="org/cce/sistema/model/Catequista.hbm.xml" />
-		<mapping resource="org/cce/sistema/model/Usuario.hbm.xml" />
-		<mapping resource="org/cce/sistema/model/Porcentaje.hbm.xml" />
-		<mapping resource="org/cce/sistema/model/Horario.hbm.xml" />
-	</session-factory>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_cce?serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+        <property name="hibernate.search.autoregister_listeners">true</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        
+        <mapping resource="org/cce/sistema/model/Codigo.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Parroquia.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Catequizado.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Ciclo.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Libro.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Direccion.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Usuario.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Porcentaje.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Horario.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Calificacion.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Bitacora.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Registro.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Catequista.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Municipio.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Bautismo.hbm.xml"/>
+        <mapping resource="org/cce/sistema/model/Numero.hbm.xml"/>
+    </session-factory>
 </hibernate-configuration>

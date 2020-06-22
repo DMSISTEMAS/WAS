@@ -1,92 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 26 abr. 2020 22:22:29 by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping auto-import="true"
-	default-access="property" default-cascade="none" default-lazy="true">
-	<class catalog="db_cce" dynamic-insert="false"
-		dynamic-update="false" mutable="true"
-		name="org.cce.sistema.model.Catequizado" optimistic-lock="version"
-		polymorphism="implicit" select-before-update="false"
-		table="catequizado">
-		<id name="idCatequizado" type="java.lang.Integer">
-			<column name="idCatequizado" />
-			<generator class="identity" />
-		</id>
-		<property generated="never" lazy="false" name="nombre"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="100" name="nombre" />
-		</property>
-		<property generated="never" lazy="false"
-			name="apellidoPaterno" optimistic-lock="true" type="string"
-			unique="false">
-			<column length="50" name="apellidoPaterno" />
-		</property>
-		<property generated="never" lazy="false"
-			name="apellidoMaterno" optimistic-lock="true" type="string"
-			unique="false">
-			<column length="50" name="apellidoMaterno" />
-		</property>
-		<property generated="never" lazy="false" name="direccion"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="250" name="direccion" />
-		</property>
-		<property generated="never" lazy="false" name="telefono"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="15" name="telefono" />
-		</property>
-		<property generated="never" lazy="false" name="correo"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="35" name="correo" />
-		</property>
-		<property generated="never" lazy="false"
-			name="fechaNacimiento" optimistic-lock="true" type="date"
-			unique="false">
-			<column length="10" name="fechaNacimiento" />
-		</property>
-		<property generated="never" lazy="false" name="fechaAlta"
-			optimistic-lock="true" type="timestamp" unique="false">
-			<column length="19" name="fechaAlta" />
-		</property>
-		<property generated="never" lazy="false" name="foto"
-			optimistic-lock="true" type="binary" unique="false">
-			<column name="foto" />
-		</property>
-		<property generated="never" lazy="false" name="nombrePapa"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="200" name="nombrePapa" />
-		</property>
-		<property generated="never" lazy="false" name="nombreMama"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="200" name="nombreMama" />
-		</property>
-		<property generated="never" lazy="false" name="fechaBautismo"
-			optimistic-lock="true" type="date" unique="false">
-			<column length="10" name="fechaBautismo" />
-		</property>
-		<property generated="never" lazy="false" name="lugarBautismo"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="150" name="lugarBautismo" />
-		</property>
-		<property generated="never" lazy="false"
-			name="estadoRegistro" optimistic-lock="true" type="string"
-			unique="false">
-			<column length="50" name="estadoRegistro" />
-		</property>
-		<property generated="never" lazy="false" name="estado"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="20" name="estado" />
-		</property>
-		<property generated="never" lazy="false" name="observaciones"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="1000" name="observaciones" />
-		</property>
-		<set fetch="select" inverse="true" lazy="true" mutable="true"
-			name="registros" optimistic-lock="true" sort="unsorted"
-			table="registro">
-			<key on-delete="noaction">
-				<column name="idCatequizado" />
-			</key>
-			<one-to-many class="org.cce.sistema.model.Registro"
-				not-found="exception" />
-		</set>
-	</class>
+<!-- Generated 22/06/2020 11:08:57 AM by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_cce" dynamic-insert="false" dynamic-update="false" mutable="true" name="org.cce.sistema.model.Catequizado" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="catequizado">
+        <id name="idCatequizado" type="java.lang.Integer">
+            <column name="idCatequizado"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="org.cce.sistema.model.Bautismo" embed-xml="true" fetch="select" insert="true" name="bautismo" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="idBautismo"/>
+        </many-to-one>
+        <many-to-one class="org.cce.sistema.model.Codigo" embed-xml="true" fetch="select" insert="true" name="codigo" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="idCodigo"/>
+        </many-to-one>
+        <many-to-one class="org.cce.sistema.model.Direccion" embed-xml="true" fetch="select" insert="true" name="direccion" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="idDireccion"/>
+        </many-to-one>
+        <many-to-one class="org.cce.sistema.model.Municipio" embed-xml="true" fetch="select" insert="true" name="municipio" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="idMunicipio"/>
+        </many-to-one>
+        <many-to-one class="org.cce.sistema.model.Numero" embed-xml="true" fetch="select" insert="true" name="numero" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="idNumero"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="nombre"/>
+        </property>
+        <property generated="never" lazy="false" name="apellidoPaterno" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="apellidoPaterno"/>
+        </property>
+        <property generated="never" lazy="false" name="apellidoMaterno" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="apellidoMaterno"/>
+        </property>
+        <property generated="never" lazy="false" name="telefono" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="telefono"/>
+        </property>
+        <property generated="never" lazy="false" name="correo" optimistic-lock="true" type="string" unique="false">
+            <column length="35" name="correo"/>
+        </property>
+        <property generated="never" lazy="false" name="fechaNacimiento" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="fechaNacimiento"/>
+        </property>
+        <property generated="never" lazy="false" name="fechaAlta" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="fechaAlta"/>
+        </property>
+        <property generated="never" lazy="false" name="foto" optimistic-lock="true" type="binary" unique="false">
+            <column name="foto"/>
+        </property>
+        <property generated="never" lazy="false" name="nombrePapa" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="nombrePapa"/>
+        </property>
+        <property generated="never" lazy="false" name="nombreMama" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="nombreMama"/>
+        </property>
+        <property generated="never" lazy="false" name="fechaBautismo" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="fechaBautismo"/>
+        </property>
+        <property generated="never" lazy="false" name="lugarBautismo" optimistic-lock="true" type="string" unique="false">
+            <column length="150" name="lugarBautismo"/>
+        </property>
+        <property generated="never" lazy="false" name="estadoRegistro" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="estadoRegistro"/>
+        </property>
+        <property generated="never" lazy="false" name="estado" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="estado"/>
+        </property>
+        <property generated="never" lazy="false" name="observaciones" optimistic-lock="true" type="string" unique="false">
+            <column length="1000" name="observaciones"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="registros" optimistic-lock="true" sort="unsorted" table="registro">
+            <key on-delete="noaction">
+                <column name="idCatequizado"/>
+            </key>
+            <one-to-many class="org.cce.sistema.model.Registro" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
 </hibernate-mapping>

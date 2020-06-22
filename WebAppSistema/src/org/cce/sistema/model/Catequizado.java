@@ -8,10 +8,14 @@ public class Catequizado implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Integer idCatequizado;
+	private Bautismo bautismo;
+	private Codigo codigo;
+	private Direccion direccion;
+	private Municipio municipio;
+	private Numero numero;
 	private String nombre;
 	private String apellidoPaterno;
 	private String apellidoMaterno;
-	private String direccion;
 	private String telefono;
 	private String correo;
 	private Date fechaNacimiento;
@@ -31,14 +35,17 @@ public class Catequizado implements java.io.Serializable {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public Catequizado(String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, String telefono,
-			String correo, Date fechaNacimiento, Date fechaAlta, byte[] foto, String nombrePapa, String nombreMama,
-			Date fechaBautismo, String lugarBautismo, String estadoRegistro, String estado, String observaciones,
-			Set registros) {
+	public Catequizado(Bautismo bautismo, Codigo codigo, Direccion direccion, Municipio municipio, Numero numero,
+			String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String correo,
+			Date fechaNacimiento, Date fechaAlta, byte[] foto, String nombrePapa, String nombreMama, Date fechaBautismo,
+			String lugarBautismo, String estadoRegistro, String estado, String observaciones, Set registros) {
+		this.bautismo = bautismo;
+		this.codigo = codigo;
+		this.direccion = direccion;
+		this.municipio = municipio;
+		this.numero = numero;
 		this.nombre = nombre;
 		this.apellidoPaterno = apellidoPaterno;
-		this.apellidoMaterno = apellidoMaterno;
-		this.direccion = direccion;
 		this.telefono = telefono;
 		this.correo = correo;
 		this.fechaNacimiento = fechaNacimiento;
@@ -60,6 +67,46 @@ public class Catequizado implements java.io.Serializable {
 
 	public void setIdCatequizado(Integer idCatequizado) {
 		this.idCatequizado = idCatequizado;
+	}
+
+	public Bautismo getBautismo() {
+		return this.bautismo;
+	}
+
+	public void setBautismo(Bautismo bautismo) {
+		this.bautismo = bautismo;
+	}
+
+	public Codigo getCodigo() {
+		return this.codigo;
+	}
+
+	public void setCodigo(Codigo codigo) {
+		this.codigo = codigo;
+	}
+
+	public Direccion getDireccion() {
+		return this.direccion;
+	}
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
+
+	public Municipio getMunicipio() {
+		return this.municipio;
+	}
+
+	public void setMunicipio(Municipio municipio) {
+		this.municipio = municipio;
+	}
+
+	public Numero getNumero() {
+		return this.numero;
+	}
+
+	public void setNumero(Numero numero) {
+		this.numero = numero;
 	}
 
 	public String getNombre() {
@@ -84,14 +131,6 @@ public class Catequizado implements java.io.Serializable {
 
 	public void setApellidoMaterno(String apellidoMaterno) {
 		this.apellidoMaterno = apellidoMaterno;
-	}
-
-	public String getDireccion() {
-		return this.direccion;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
 	}
 
 	public String getTelefono() {

@@ -15,6 +15,7 @@ public class Libro implements java.io.Serializable {
 	public Libro() {
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Libro(String nombre, String descripcion, Set registros) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;

@@ -1,6 +1,7 @@
 package org.cce.sistema.model;
 
 public class Calificacion implements java.io.Serializable {
+
 	private static final long serialVersionUID = 1L;
 	private Integer idCalificacion;
 	private Registro registro;
