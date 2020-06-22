@@ -9,12 +9,12 @@ public class Bitacora implements java.io.Serializable {
 	private Registro registro;
 	private Integer semana;
 	private Date fecha;
-	private String puntualidad;
-	private String asistencia;
-	private String conducta;
-	private String misa;
-	private String tarea;
-	private String extra;
+	private Long puntualidad;
+	private Long asistencia;
+	private Long conducta;
+	private Long misa;
+	private Long tarea;
+	private Long extra;
 	private String observaciones;
 	private String ruta;
 	private String justificante;
@@ -26,9 +26,9 @@ public class Bitacora implements java.io.Serializable {
 	public Bitacora() {
 	}
 
-	public Bitacora(Registro registro, Integer semana, Date fecha, String puntualidad, String asistencia,
-			String conducta, String misa, String tarea, String extra, String observaciones, String ruta,
-			String justificante, Boolean estatus, Long aseo, String catequesisFamiliar, String misaSalida) {
+	public Bitacora(Registro registro, Integer semana, Date fecha, Long puntualidad, Long asistencia, Long conducta,
+			Long misa, Long tarea, Long extra, String observaciones, String ruta, String justificante, Boolean estatus,
+			Long aseo, String catequesisFamiliar, String misaSalida) {
 		this.registro = registro;
 		this.semana = semana;
 		this.fecha = fecha;
@@ -79,51 +79,51 @@ public class Bitacora implements java.io.Serializable {
 		this.fecha = fecha;
 	}
 
-	public String getPuntualidad() {
+	public Long getPuntualidad() {
 		return this.puntualidad;
 	}
 
-	public void setPuntualidad(String puntualidad) {
+	public void setPuntualidad(Long puntualidad) {
 		this.puntualidad = puntualidad;
 	}
 
-	public String getAsistencia() {
+	public Long getAsistencia() {
 		return this.asistencia;
 	}
 
-	public void setAsistencia(String asistencia) {
+	public void setAsistencia(Long asistencia) {
 		this.asistencia = asistencia;
 	}
 
-	public String getConducta() {
+	public Long getConducta() {
 		return this.conducta;
 	}
 
-	public void setConducta(String conducta) {
+	public void setConducta(Long conducta) {
 		this.conducta = conducta;
 	}
 
-	public String getMisa() {
+	public Long getMisa() {
 		return this.misa;
 	}
 
-	public void setMisa(String misa) {
+	public void setMisa(Long misa) {
 		this.misa = misa;
 	}
 
-	public String getTarea() {
+	public Long getTarea() {
 		return this.tarea;
 	}
 
-	public void setTarea(String tarea) {
+	public void setTarea(Long tarea) {
 		this.tarea = tarea;
 	}
 
-	public String getExtra() {
+	public Long getExtra() {
 		return this.extra;
 	}
 
-	public void setExtra(String extra) {
+	public void setExtra(Long extra) {
 		this.extra = extra;
 	}
 

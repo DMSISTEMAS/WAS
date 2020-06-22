@@ -15,6 +15,7 @@ public class Catequista implements java.io.Serializable {
 	private String telefono;
 	private Date fechaNacimiento;
 	private String foto;
+
 	@SuppressWarnings("rawtypes")
 	private Set registros = new HashSet(0);
 

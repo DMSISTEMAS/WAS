@@ -1,40 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 22/06/2020 11:08:57 AM by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class catalog="db_cce" dynamic-insert="false" dynamic-update="false" mutable="true" name="org.cce.sistema.model.Calificacion" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="calificacion">
-        <id name="idCalificacion" type="java.lang.Integer">
-            <column name="idCalificacion"/>
-            <generator class="identity"/>
-        </id>
-        <many-to-one class="org.cce.sistema.model.Registro" embed-xml="true" fetch="select" insert="true" name="registro" not-found="exception" optimistic-lock="true" unique="false" update="true">
-            <column name="idRegistro"/>
-        </many-to-one>
-        <property generated="never" lazy="false" name="total" optimistic-lock="true" type="java.lang.Long" unique="false">
-            <column name="total" precision="10" scale="0"/>
-        </property>
-        <property generated="never" lazy="false" name="estado" optimistic-lock="true" type="string" unique="false">
-            <column length="50" name="estado"/>
-        </property>
-        <property generated="never" lazy="false" name="faltas" optimistic-lock="true" type="java.lang.Long" unique="false">
-            <column name="faltas" precision="10" scale="0"/>
-        </property>
-        <property generated="never" lazy="false" name="observaciones" optimistic-lock="true" type="string" unique="false">
-            <column length="1000" name="observaciones"/>
-        </property>
-        <property generated="never" lazy="false" name="tareas" optimistic-lock="true" type="java.lang.Long" unique="false">
-            <column name="tareas" precision="10" scale="0"/>
-        </property>
-        <property generated="never" lazy="false" name="extras" optimistic-lock="true" type="java.lang.Long" unique="false">
-            <column name="extras" precision="10" scale="0"/>
-        </property>
-        <property generated="never" lazy="false" name="catequesis" optimistic-lock="true" type="java.lang.Long" unique="false">
-            <column name="catequesis" precision="10" scale="0"/>
-        </property>
-        <property generated="never" lazy="false" name="misa" optimistic-lock="true" type="java.lang.Long" unique="false">
-            <column name="misa" precision="10" scale="0"/>
-        </property>
-        <property generated="never" lazy="false" name="evaluacion" optimistic-lock="true" type="java.lang.Long" unique="false">
-            <column name="evaluacion" precision="10" scale="0"/>
-        </property>
-    </class>
+<!-- Generated 22/06/2020 04:07:24 PM by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true"
+	default-access="property" default-cascade="none" default-lazy="true">
+	<class catalog="db_cce" dynamic-insert="false"
+		dynamic-update="false" mutable="true"
+		name="org.cce.sistema.model.Calificacion" optimistic-lock="version"
+		polymorphism="implicit" select-before-update="false"
+		table="calificacion">
+		<id name="idCalificacion" type="java.lang.Integer">
+			<column name="idCalificacion" />
+			<generator class="identity" />
+		</id>
+		<many-to-one class="org.cce.sistema.model.Registro"
+			fetch="select" insert="true" name="registro" not-found="exception"
+			optimistic-lock="true" unique="false" update="true">
+			<column name="idRegistro" />
+		</many-to-one>
+		<property generated="never" lazy="false" name="total"
+			optimistic-lock="true" type="java.lang.Long" unique="false">
+			<column name="total" precision="10" scale="0" />
+		</property>
+		<property generated="never" lazy="false" name="estado"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="50" name="estado" />
+		</property>
+		<property generated="never" lazy="false" name="faltas"
+			optimistic-lock="true" type="java.lang.Long" unique="false">
+			<column name="faltas" precision="10" scale="0" />
+		</property>
+		<property generated="never" lazy="false" name="observaciones"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="1000" name="observaciones" />
+		</property>
+		<property generated="never" lazy="false" name="tareas"
+			optimistic-lock="true" type="java.lang.Long" unique="false">
+			<column name="tareas" precision="10" scale="0" />
+		</property>
+		<property generated="never" lazy="false" name="extras"
+			optimistic-lock="true" type="java.lang.Long" unique="false">
+			<column name="extras" precision="10" scale="0" />
+		</property>
+		<property generated="never" lazy="false" name="catequesis"
+			optimistic-lock="true" type="java.lang.Long" unique="false">
+			<column name="catequesis" precision="10" scale="0" />
+		</property>
+		<property generated="never" lazy="false" name="misa"
+			optimistic-lock="true" type="java.lang.Long" unique="false">
+			<column name="misa" precision="10" scale="0" />
+		</property>
+		<property generated="never" lazy="false" name="evaluacion"
+			optimistic-lock="true" type="java.lang.Long" unique="false">
+			<column name="evaluacion" precision="10" scale="0" />
+		</property>
+	</class>
 </hibernate-mapping>

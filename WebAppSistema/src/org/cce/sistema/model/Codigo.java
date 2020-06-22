@@ -14,6 +14,7 @@ public class Codigo implements java.io.Serializable {
 
 	public Codigo() {
 	}
+
 	@SuppressWarnings("rawtypes")
 	public Codigo(Integer codigoPostal, String colonia, Set catequizados) {
 		this.codigoPostal = codigoPostal;

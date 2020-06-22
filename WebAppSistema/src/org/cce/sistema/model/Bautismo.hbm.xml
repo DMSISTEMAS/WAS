@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 22/06/2020 11:08:57 AM by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class catalog="db_cce" dynamic-insert="false" dynamic-update="false" mutable="true" name="org.cce.sistema.model.Bautismo" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="bautismo">
-        <id name="idBautismo" type="java.lang.Integer">
-            <column name="idBautismo"/>
-            <generator class="identity"/>
-        </id>
-        <property generated="never" lazy="false" name="parroquia" optimistic-lock="true" type="string" unique="false">
-            <column length="100" name="parroquia"/>
-        </property>
-        <property generated="never" lazy="false" name="lugar" optimistic-lock="true" type="string" unique="false">
-            <column length="100" name="lugar"/>
-        </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="catequizados" optimistic-lock="true" sort="unsorted" table="catequizado">
-            <key on-delete="noaction">
-                <column name="idBautismo"/>
-            </key>
-            <one-to-many class="org.cce.sistema.model.Catequizado" embed-xml="true" not-found="exception"/>
-        </set>
-    </class>
+<!-- Generated 22/06/2020 04:07:24 PM by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true"
+	default-access="property" default-cascade="none" default-lazy="true">
+	<class catalog="db_cce" dynamic-insert="false"
+		dynamic-update="false" mutable="true"
+		name="org.cce.sistema.model.Bautismo" optimistic-lock="version"
+		polymorphism="implicit" select-before-update="false" table="bautismo">
+		<id name="idBautismo" type="java.lang.Integer">
+			<column name="idBautismo" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="parroquia"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="100" name="parroquia" />
+		</property>
+		<property generated="never" lazy="false" name="lugar"
+			optimistic-lock="true" type="string" unique="false">
+			<column length="100" name="lugar" />
+		</property>
+		<set fetch="select" inverse="true" lazy="true" mutable="true"
+			name="catequizados" optimistic-lock="true" sort="unsorted"
+			table="catequizado">
+			<key on-delete="noaction">
+				<column name="idBautismo" />
+			</key>
+			<one-to-many class="org.cce.sistema.model.Catequizado"
+				not-found="exception" />
+		</set>
+	</class>
 </hibernate-mapping>
