@@ -50,10 +50,6 @@
 			unique="false">
 			<column length="50" name="apellidoMaterno" />
 		</property>
-		<property generated="never" lazy="false" name="direccion_1"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="250" name="direccion" />
-		</property>
 		<property generated="never" lazy="false" name="telefono"
 			optimistic-lock="true" type="string" unique="false">
 			<column length="15" name="telefono" />

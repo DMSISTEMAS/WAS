@@ -16,7 +16,6 @@ public class Catequizado implements java.io.Serializable {
 	private String nombre;
 	private String apellidoPaterno;
 	private String apellidoMaterno;
-	private String direccion_1;
 	private String telefono;
 	private String correo;
 	private Date fechaNacimiento;
@@ -37,10 +36,9 @@ public class Catequizado implements java.io.Serializable {
 
 	@SuppressWarnings("rawtypes")
 	public Catequizado(Bautismo bautismo, Codigo codigo, Direccion direccion, Municipio municipio, Numero numero,
-			String nombre, String apellidoPaterno, String apellidoMaterno, String direccion_1, String telefono,
-			String correo, Date fechaNacimiento, Date fechaAlta, byte[] foto, String nombrePapa, String nombreMama,
-			Date fechaBautismo, String lugarBautismo, String estadoRegistro, String estado, String observaciones,
-			Set registros) {
+			String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String correo,
+			Date fechaNacimiento, Date fechaAlta, byte[] foto, String nombrePapa, String nombreMama, Date fechaBautismo,
+			String lugarBautismo, String estadoRegistro, String estado, String observaciones, Set registros) {
 		this.bautismo = bautismo;
 		this.codigo = codigo;
 		this.direccion = direccion;
@@ -49,7 +47,6 @@ public class Catequizado implements java.io.Serializable {
 		this.nombre = nombre;
 		this.apellidoPaterno = apellidoPaterno;
 		this.apellidoMaterno = apellidoMaterno;
-		this.direccion_1 = direccion_1;
 		this.telefono = telefono;
 		this.correo = correo;
 		this.fechaNacimiento = fechaNacimiento;
@@ -135,14 +132,6 @@ public class Catequizado implements java.io.Serializable {
 
 	public void setApellidoMaterno(String apellidoMaterno) {
 		this.apellidoMaterno = apellidoMaterno;
-	}
-
-	public String getDireccion_1() {
-		return this.direccion_1;
-	}
-
-	public void setDireccion_1(String direccion_1) {
-		this.direccion_1 = direccion_1;
 	}
 
 	public String getTelefono() {

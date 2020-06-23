@@ -1,15 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 #menuPrincipal{
-    /*    background-image: url('../..//img/blue.jpg');*/
+    font-family: 'Abel', sans-serif !important;
     height: 1px;
-    margin-top: 50px;
+    margin-top: 2px;
     position: relative;
     top: 10px;
-    font-size: 13px;
+    background-color: #77B839 !important;
+    font-size: 13px !important;
 }
 
 #top {
     position: relative;
-    background-image: url('../..//img/nuevo.png');
     background-repeat: no-repeat;
     background-size: 7%;
     background-color:white;
