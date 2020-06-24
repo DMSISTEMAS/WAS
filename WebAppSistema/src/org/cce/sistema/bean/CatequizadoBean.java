@@ -22,14 +22,12 @@ public class CatequizadoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Catequizado catequizado;
-	private Catequizado actualizarCatequizado;
 	private List<Catequizado> listaCatequizado;
 	private UploadedFile file;
 	private Path to;
 
 	public CatequizadoBean() {
 		this.catequizado = new Catequizado();
-		this.actualizarCatequizado = new Catequizado();
 	}
 
 	public Catequizado getCatequizado() {
@@ -54,14 +52,6 @@ public class CatequizadoBean implements Serializable {
 
 	public void setTo(Path to) {
 		this.to = to;
-	}
-
-	public Catequizado getActualizarCatequizado() {
-		return actualizarCatequizado;
-	}
-
-	public void setActualizarCatequizado(Catequizado actualizarCatequizado) {
-		this.actualizarCatequizado = actualizarCatequizado;
 	}
 
 	public List<Catequizado> getListaCatequizado() {
@@ -89,7 +79,7 @@ public class CatequizadoBean implements Serializable {
 
 	public void actualizar() {
 		CatequizadoDao cDao = new CatequizadoDaoImp();
-		cDao.actualizar(actualizarCatequizado);
+		cDao.actualizar(catequizado);
 		// catequizado = new Catequizado();
 	}
 

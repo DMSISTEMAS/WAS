@@ -1,79 +1,137 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 22/06/2020 04:07:24 PM by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping auto-import="true"
-	default-access="property" default-cascade="none" default-lazy="true">
-	<class catalog="db_cce" dynamic-insert="false"
-		dynamic-update="false" mutable="true"
-		name="org.cce.sistema.model.Registro" optimistic-lock="version"
-		polymorphism="implicit" select-before-update="false" table="registro">
-		<id name="idRegistro" type="java.lang.Integer">
-			<column name="idRegistro" />
-			<generator class="identity" />
-		</id>
-		<many-to-one class="org.cce.sistema.model.Catequista"
-			fetch="select" insert="true" name="catequista" not-found="exception"
-			optimistic-lock="true" unique="false" update="true">
-			<column name="idCatequista" />
-		</many-to-one>
-		<many-to-one class="org.cce.sistema.model.Catequizado"
-			fetch="select" insert="true" name="catequizado" not-found="exception"
-			optimistic-lock="true" unique="false" update="true">
-			<column name="idCatequizado" />
-		</many-to-one>
-		<many-to-one class="org.cce.sistema.model.Ciclo"
-			fetch="select" insert="true" name="ciclo" not-found="exception"
-			optimistic-lock="true" unique="false" update="true">
-			<column name="idCiclo" />
-		</many-to-one>
-		<many-to-one class="org.cce.sistema.model.Horario"
-			fetch="select" insert="true" name="horario" not-found="exception"
-			optimistic-lock="true" unique="false" update="true">
-			<column name="idHorario" />
-		</many-to-one>
-		<many-to-one class="org.cce.sistema.model.Libro"
-			fetch="select" insert="true" name="libro" not-found="exception"
-			optimistic-lock="true" unique="false" update="true">
-			<column name="idLibro" />
-		</many-to-one>
-		<many-to-one class="org.cce.sistema.model.Parroquia"
-			fetch="select" insert="true" name="parroquia" not-found="exception"
-			optimistic-lock="true" unique="false" update="true">
-			<column name="idParroquia" />
-		</many-to-one>
-		<many-to-one class="org.cce.sistema.model.Porcentaje"
-			fetch="select" insert="true" name="porcentaje" not-found="exception"
-			optimistic-lock="true" unique="false" update="true">
-			<column name="idPorcentaje" />
-		</many-to-one>
-		<property generated="never" lazy="false" name="costo"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="costo" precision="18" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="alta"
-			optimistic-lock="true" type="timestamp" unique="false">
-			<column length="19" name="alta" />
-		</property>
-		<property generated="never" lazy="false" name="estado"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="50" name="estado" />
-		</property>
-		<set fetch="select" inverse="true" lazy="true" mutable="true"
-			name="calificacions" optimistic-lock="true" sort="unsorted"
-			table="calificacion">
-			<key on-delete="noaction">
-				<column name="idRegistro" />
-			</key>
-			<one-to-many class="org.cce.sistema.model.Calificacion"
-				not-found="exception" />
-		</set>
-		<set fetch="select" inverse="true" lazy="true" mutable="true"
-			name="bitacoras" optimistic-lock="true" sort="unsorted"
-			table="bitacora">
-			<key on-delete="noaction">
-				<column name="idRegistro" />
-			</key>
-			<one-to-many class="org.cce.sistema.model.Bitacora"
-				not-found="exception" />
-		</set>
-	</class>
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Generated 24/06/2020 10:23:40 AM by Hibernate Tools 5.3.15.Final -->
+<hibernate-mapping>
+
+<class
+    name="org.cce.sistema.model.Registro"
+    table="registro"
+    catalog="db_cce"
+    optimistic-lock="version"
+>
+
+	<id 
+        name="idRegistro"
+        type="java.lang.Integer"
+    >
+    
+<column name="idRegistro" />
+	    <generator class="identity" />
+    </id>
+
+
+
+
+    <many-to-one
+	    name="catequista"
+	    class="org.cce.sistema.model.Catequista"
+	    
+        fetch="select"
+    >
+<column name="idCatequista" />
+   </many-to-one>
+    <many-to-one
+	    name="catequizado"
+	    class="org.cce.sistema.model.Catequizado"
+	    
+        fetch="select"
+    >
+<column name="idCatequizado" />
+   </many-to-one>
+    <many-to-one
+	    name="ciclo"
+	    class="org.cce.sistema.model.Ciclo"
+	    
+        fetch="select"
+    >
+<column name="idCiclo" />
+   </many-to-one>
+    <many-to-one
+	    name="horario"
+	    class="org.cce.sistema.model.Horario"
+	    
+        fetch="select"
+    >
+<column name="idHorario" />
+   </many-to-one>
+    <many-to-one
+	    name="libro"
+	    class="org.cce.sistema.model.Libro"
+	    
+        fetch="select"
+    >
+<column name="idLibro" />
+   </many-to-one>
+    <many-to-one
+	    name="parroquia"
+	    class="org.cce.sistema.model.Parroquia"
+	    
+        fetch="select"
+    >
+<column name="idParroquia" />
+   </many-to-one>
+    <many-to-one
+	    name="porcentaje"
+	    class="org.cce.sistema.model.Porcentaje"
+	    
+        fetch="select"
+    >
+<column name="idPorcentaje" />
+   </many-to-one>
+    <property
+        name="costo"
+	    type="java.lang.Long"
+    >
+<column name="costo" precision="18" scale="0" />
+  </property>
+
+    <property
+        name="alta"
+	    type="timestamp"
+    >
+<column name="alta" length="19" />
+  </property>
+
+    <property
+        name="estado"
+	    type="string"
+    >
+<column name="estado" length="50" />
+  </property>
+
+
+	<set name="calificacions"
+table="calificacion"
+	inverse="true"
+	lazy="true"	 		
+	 fetch="select"
+	>
+		<key
+		> 
+<column name="idRegistro" />
+		</key>
+<one-to-many class="org.cce.sistema.model.Calificacion"
+/>
+	</set>
+
+	<set name="bitacoras"
+table="bitacora"
+	inverse="true"
+	lazy="true"	 		
+	 fetch="select"
+	>
+		<key
+		> 
+<column name="idRegistro" />
+		</key>
+<one-to-many class="org.cce.sistema.model.Bitacora"
+/>
+	</set>
+
+
+</class>
+
 </hibernate-mapping>

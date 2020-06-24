@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link
+		href="https://fonts.googleapis.com/css?family=Barlow:300display=swap"
+		rel="stylesheet" />
+</h:head>
+<body>
+	<ui:composition template="/Template/Template.xhtml">
+
+		<ui:define name="top">
+
+		</ui:define>
+
+		<ui:define name="content">
+			<br></br>
+			<h3 style="font-family: 'Barlow', sans-serif;">ADMINISTRACIÓN DE
+				DIRECCIONES</h3>
+			<br></br>
+			<!--Barra de tareas-->
+			<h:form>
+
+
+				<p:toolbar>
+					<f:facet name="left">
+						<br></br>
+						<p:commandButton value="" oncomplete="PF('dlgAgregar').show()"
+							style="height: 50px; width: 50px; background-image: url('/img/book.png') !important; 
+							background-size: 50px; background-repeat: no-repeat"
+							title="Agregar nuevo registro" />
+						<br></br>
+						<br></br>
+					</f:facet>
+
+					<f:facet name="right">
+
+					</f:facet>
+
+				</p:toolbar>
+			</h:form>
+			<!--Barra de tareasl-->
+			<br></br>
+			<h3 style="font-family: 'Barlow', sans-serif;">REGISTROS</h3>
+			<br></br>
+			<!--Formulario principal-->
+			<h:form id="frmPrincipal">
+				<p:growl id="messages" showDetail="true" showSummary="true" />
+				<p:panel id="pnlPrincipal" header=""
+					style="margin: 0 auto; text-align: center; font-size: 12px; font-family: 'Barlow', sans-serif">
+					<p:layoutUnit id="tablaPrincipal" position="center"
+						style="padding: 5px; text-align: center;">
+						<p:dataTable var="var" value="#{direccion.lista}"
+							sortMode="multiple" scrollable="true" scrollHeight="435"
+							scrollWidth="100%"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="10,20,50,100,200,500" rows="10"
+							reflow="true" paginator="true" rowHover="true"
+							currentPageReportTemplate="Registros #{direccion.lista.size()}"
+							paginatorAlwaysVisible="true" emptyMessage="No hay registros">
+
+							<p:column headerText="Nombre del libro">
+								<h:outputText value="#{var.calle}" />
+							</p:column>
+
+							<p:column headerText="..." style="width: 4%">
+								<p:commandButton value=""
+									style="height: 28px; width: 28px; background-image: url('/img/edit.png') !important;
+									background-size: 26px; background-repeat: no-repeat"
+									title="Editar registro" oncomplete="PF('dlgEditar').show()"
+									update="frmEditar">
+									<f:setPropertyActionListener value="#{var}"
+										target="#{direccion.direccion}" />
+								</p:commandButton>
+							</p:column>
+
+							<p:column headerText="..." style="width: 4%">
+								<p:commandButton value=""
+									style="height: 28px; width: 28px; background-image: url('/img/delete.png') !important;
+									background-size: 26px; background-repeat: no-repeat"
+									title="Borrar registro" />
+							</p:column>
+						</p:dataTable>
+					</p:layoutUnit>
+				</p:panel>
+			</h:form>
+			<!--Formulario principal-->
+
+
+			<!--Diálogo para agregar-->
+			<h:form id="frmAgregar">
+
+				<p:dialog id="dialogo" widgetVar="dlgAgregar"
+					header="Agregar nuevo registro" showEffect="clip"
+					hideEffect="explode" resizable="false" responsive="true"
+					width="600">
+					<p:panel id="pnlAgregar">
+						<p:messages id="msg" showDetail="true" closable="true" />
+						<p:panelGrid id="panelAgregar" columns="2"
+							style="margin: 0 auto; width: 100%; font-size: 14px">
+
+							<p:outputLabel for="direccion" value="Nombre de la calle" />
+							<p:inputText id="direccion" value="#{direccion.direccion.calle}"
+								required="true" requiredMessage="Requiere nombre de la calle"
+								style="width: 100%">
+								<p:message for="direccion" />
+							</p:inputText>
+
+						</p:panelGrid>
+					</p:panel>
+					<p:spacer width="520" height="5" />
+					<p:commandButton id="track"
+						style="height: 50px; width: 50px; background-image: url('/img/save.png') !important;
+						background-size: 50px; background-repeat: no-repeat"
+						value="" update="pnlAgregar, msg" title="Guardar registro"
+						actionListener="#{direccion.guardar()}">
+					</p:commandButton>
+				</p:dialog>
+			</h:form>
+			<!--Diálogo para agregar-->
+
+			<!-- INICIA FORMUALARIO PARA EDITAR -->
+			<h:form id="frmEditar">
+				<p:growl id="msgEditar" showDetail="true" showSummary="true" />
+				<p:dialog id="dialogoEditar"
+					header="Editar registro de: #{direccion.direccion.calle}"
+					widgetVar="dlgEditar" resizable="true" showEffect="clip"
+					hideEffect="fold" width="450" style="font-size: 13px">
+					<p:panelGrid id="pnlEditar" columns="2">
+
+						<p:outputLabel for="direccion" value="Nombre del libro" />
+						<p:inputText id="direccion" value="#{direccion.direccion.calle}"
+							required="true" requiredMessage="Requiere nombre del libro"
+							style="width: 100%">
+							<p:message for="direccion" />
+						</p:inputText>
+
+
+					</p:panelGrid>
+					<br></br>
+					<p:spacer height="50" width="370" />
+					<p:commandButton value=""
+						style="height:
+						50px; width: 50px; background-image:
+						url('/img/save.png') !important;
+									background-size: 50px; background-repeat:
+						no-repeat"
+						title="Actualizar registro"
+						actionListener="#{direccion.actualizar()}"
+						oncomplete="PF('dlgEditar').hide()" update="frmPrincipal" />
+				</p:dialog>
+			</h:form>
+			<!-- TERMINA FORMUALARIO PARA EDITAR -->
+
+
+		</ui:define>
+
+
+	</ui:composition>
+</body>
+</html>

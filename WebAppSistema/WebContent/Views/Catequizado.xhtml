@@ -95,7 +95,7 @@
 									title="Editar registro" oncomplete="PF('dlgEditar').show()"
 									update="frmEditar">
 									<f:setPropertyActionListener value="#{var}"
-										target="#{catequizado.actualizarCatequizado}" />
+										target="#{catequizado.catequizado}" />
 								</p:commandButton>
 							</p:column>
 
@@ -181,22 +181,6 @@
 								<p:message for="fecha" />
 							</p:calendar>
 
-							<p:outputLabel for="lb" value="Lugar de Bautismo" />
-							<p:inputTextarea id="lb" style="width: 300px"
-								value="#{catequizado.catequizado.lugarBautismo}" required="true"
-								placeholder="Lugar de Bautismo">
-								<p:message for="lb" />
-							</p:inputTextarea>
-
-							<p:outputLabel for="fechaB" value="Fecha de Bautismo" />
-							<p:calendar id="fechaB" yearRange="1950:2025" effect="blind"
-								effectDuration="13000" pages="2" showOn="button"
-								style="width: 150px;"
-								value="#{catequizado.catequizado.fechaBautismo}" required="true"
-								placeholder="Fecha de Bautismo" pattern="yyyy-MM-dd" mask="true">
-								<p:message for="fechaB" />
-							</p:calendar>
-
 							<p:outputLabel for="papa" value="Nombre del Papá" />
 							<p:inputTextarea id="papa" style="width: 300px"
 								value="#{catequizado.catequizado.nombrePapa}" required="true"
@@ -232,64 +216,51 @@
 			<h:form id="frmEditar">
 				<p:growl id="msgEditar" showDetail="true" showSummary="true" />
 				<p:dialog id="dialogoEditar"
-					header="Editar registro de: #{catequizado.actualizarCatequizado.nombre} #{catequizado.actualizarCatequizado.apellidoPaterno} #{catequizado.actualizarCatequizado.apellidoMaterno}"
+					header="Editar registro de: #{catequizado.catequizado.nombre} #{catequizado.catequizado.apellidoPaterno} #{catequizado.catequizado.apellidoMaterno}"
 					widgetVar="dlgEditar" resizable="true" showEffect="clip"
 					hideEffect="fold" style="font-size: 13px">
 					<p:panelGrid id="pnlEditar" columns="2">
 
 						<p:outputLabel value="Nombre" />
-						<p:inputText value="#{catequizado.actualizarCatequizado.nombre}"
+						<p:inputText value="#{catequizado.catequizado.nombre}"
 							style="width: 300px" placeholder="Nombre" />
 
-<!-- 						<p:outputLabel value="Apellido paterno" /> -->
-<!-- 						<p:inputText value="#{catequizado.catequizado.apellidoPaterno}" -->
-<!-- 							style="width: 300px" placeholder="Apellido paterno" /> -->
+						<p:outputLabel value="Apellido paterno" />
+						<p:inputText value="#{catequizado.catequizado.apellidoPaterno}"
+							style="width: 300px" placeholder="Apellido paterno" />
 
-<!-- 						<p:outputLabel value="Apellido materno" /> -->
-<!-- 						<p:inputText value="#{catequizado.catequizado.apellidoMaterno}" -->
-<!-- 							style="width: 300px" placeholder="Apellido materno" /> -->
+						<p:outputLabel value="Apellido materno" />
+						<p:inputText value="#{catequizado.catequizado.apellidoMaterno}"
+							style="width: 300px" placeholder="Apellido materno" />
 
-<!-- 						<p:outputLabel value="Teléfono" /> -->
-<!-- 						<p:inputText value="#{catequizado.catequizado.telefono}" -->
-<!-- 							style="width: 200px" placeholder="Teléfono" /> -->
+						<!-- 						<p:outputLabel value="Teléfono" /> -->
+						<!-- 						<p:inputText value="#{catequizado.catequizado.telefono}" -->
+						<!-- 							style="width: 200px" placeholder="Teléfono" /> -->
 
-<!-- 						<p:outputLabel value="Correo" /> -->
-<!-- 						<p:inputText value="#{catequizado.catequizado.correo}" -->
-<!-- 							style="width: 300px" placeholder="Correo" /> -->
+						<!-- 						<p:outputLabel value="Correo" /> -->
+						<!-- 						<p:inputText value="#{catequizado.catequizado.correo}" -->
+						<!-- 							style="width: 300px" placeholder="Correo" /> -->
 
-<!-- 						<p:outputLabel value="Fecha de nacimiento" /> -->
-<!-- 						<p:calendar yearRange="1950:2025" effect="blind" -->
-<!-- 							effectDuration="13000" pages="2" showOn="button" -->
-<!-- 							style="width: 150px;" -->
-<!-- 							value="#{catequizado.catequizado.fechaNacimiento}" -->
-<!-- 							required="true" placeholder="Fecha de nacimiento" -->
-<!-- 							pattern="yyyy-MM-dd" mask="true"> -->
-<!-- 						</p:calendar> -->
+						<!-- 						<p:outputLabel value="Fecha de nacimiento" /> -->
+						<!-- 						<p:calendar yearRange="1950:2025" effect="blind" -->
+						<!-- 							effectDuration="13000" pages="2" showOn="button" -->
+						<!-- 							style="width: 150px;" -->
+						<!-- 							value="#{catequizado.catequizado.fechaNacimiento}" -->
+						<!-- 							required="true" placeholder="Fecha de nacimiento" -->
+						<!-- 							pattern="yyyy-MM-dd" mask="true"> -->
+						<!-- 						</p:calendar> -->
 
-<!-- 						<p:outputLabel value="Fecha de bautismo" /> -->
-<!-- 						<p:calendar yearRange="1950:2025" effect="blind" -->
-<!-- 							effectDuration="13000" pages="2" showOn="button" -->
-<!-- 							style="width: 150px;" -->
-<!-- 							value="#{catequizado.catequizado.fechaBautismo}" required="true" -->
-<!-- 							placeholder="Fecha de nacimiento" pattern="yyyy-MM-dd" -->
-<!-- 							mask="true"> -->
-<!-- 						</p:calendar> -->
+						<!-- 						<p:outputLabel value="Nombre del Papá" /> -->
+						<!-- 						<p:inputText value="#{catequizado.catequizado.nombrePapa}" -->
+						<!-- 							style="width: 300px" placeholder="Nombre del Papá" /> -->
 
-<!-- 						<p:outputLabel value="Lugar de Bautismo" /> -->
-<!-- 						<p:inputTextarea value="#{catequizado.catequizado.lugarBautismo}" -->
-<!-- 							style="width: 300px" placeholder="Lugar de Bautismo" /> -->
+						<!-- 						<p:outputLabel value="Nombre de la Mamá" /> -->
+						<!-- 						<p:inputText value="#{catequizado.catequizado.nombreMama}" -->
+						<!-- 							style="width: 300px" placeholder="Nombre de la Mamá" /> -->
 
-<!-- 						<p:outputLabel value="Nombre del Papá" /> -->
-<!-- 						<p:inputText value="#{catequizado.catequizado.nombrePapa}" -->
-<!-- 							style="width: 300px" placeholder="Nombre del Papá" /> -->
-
-<!-- 						<p:outputLabel value="Nombre de la Mamá" /> -->
-<!-- 						<p:inputText value="#{catequizado.catequizado.nombreMama}" -->
-<!-- 							style="width: 300px" placeholder="Nombre de la Mamá" /> -->
-
-<!-- 						<p:outputLabel value="Observaciones" /> -->
-<!-- 						<p:inputTextarea value="#{catequizado.catequizado.observaciones}" -->
-<!-- 							style="width: 300px" placeholder="Observaciones" /> -->
+						<!-- 						<p:outputLabel value="Observaciones" /> -->
+						<!-- 						<p:inputTextarea value="#{catequizado.catequizado.observaciones}" -->
+						<!-- 							style="width: 300px" placeholder="Observaciones" /> -->
 
 					</p:panelGrid>
 					<br></br>
@@ -297,10 +268,9 @@
 					<p:commandButton id="trackTest"
 						style="height: 50px; width: 50px; background-image: url('/img/save.png') !important;
 						background-size: 50px; background-repeat: no-repeat"
-						ajax="false" value="" update="pnlEditar"
-						title="Actualziar Test">
+						ajax="false" value="" update="pnlEditar" title="Actualziar Test">
 					</p:commandButton>
-					
+
 					<p:commandButton value=""
 						style="height:
 						50px; width: 50px; background-image:

@@ -1,80 +1,145 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 22/06/2020 04:07:24 PM by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping auto-import="true"
-	default-access="property" default-cascade="none" default-lazy="true">
-	<class catalog="db_cce" dynamic-insert="false"
-		dynamic-update="false" mutable="true"
-		name="org.cce.sistema.model.Bitacora" optimistic-lock="version"
-		polymorphism="implicit" select-before-update="false" table="bitacora">
-		<id name="idCiclo" type="java.lang.Integer">
-			<column name="idCiclo" />
-			<generator class="identity" />
-		</id>
-		<many-to-one class="org.cce.sistema.model.Registro"
-			fetch="select" insert="true" name="registro" not-found="exception"
-			optimistic-lock="true" unique="false" update="true">
-			<column name="idRegistro" />
-		</many-to-one>
-		<property generated="never" lazy="false" name="semana"
-			optimistic-lock="true" type="java.lang.Integer" unique="false">
-			<column name="semana" />
-		</property>
-		<property generated="never" lazy="false" name="fecha"
-			optimistic-lock="true" type="date" unique="false">
-			<column length="10" name="fecha" />
-		</property>
-		<property generated="never" lazy="false" name="puntualidad"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="puntualidad" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="asistencia"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="asistencia" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="conducta"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="conducta" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="misa"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="misa" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="tarea"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="tarea" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="extra"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="extra" precision="10" scale="0" />
-		</property>
-		<property generated="never" lazy="false" name="observaciones"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="500" name="observaciones" />
-		</property>
-		<property generated="never" lazy="false" name="ruta"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="200" name="ruta" />
-		</property>
-		<property generated="never" lazy="false" name="justificante"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="25" name="justificante" />
-		</property>
-		<property generated="never" lazy="false" name="estatus"
-			optimistic-lock="true" type="java.lang.Boolean" unique="false">
-			<column name="estatus" />
-		</property>
-		<property generated="never" lazy="false" name="aseo"
-			optimistic-lock="true" type="java.lang.Long" unique="false">
-			<column name="aseo" precision="18" scale="0" />
-		</property>
-		<property generated="never" lazy="false"
-			name="catequesisFamiliar" optimistic-lock="true" type="string"
-			unique="false">
-			<column length="25" name="catequesisFamiliar" />
-		</property>
-		<property generated="never" lazy="false" name="misaSalida"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="25" name="misaSalida" />
-		</property>
-	</class>
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Generated 24/06/2020 10:23:40 AM by Hibernate Tools 5.3.15.Final -->
+<hibernate-mapping>
+
+<class
+    name="org.cce.sistema.model.Bitacora"
+    table="bitacora"
+    catalog="db_cce"
+    optimistic-lock="version"
+>
+
+	<id 
+        name="idCiclo"
+        type="java.lang.Integer"
+    >
+    
+<column name="idCiclo" />
+	    <generator class="identity" />
+    </id>
+
+
+
+
+    <many-to-one
+	    name="registro"
+	    class="org.cce.sistema.model.Registro"
+	    
+        fetch="select"
+    >
+<column name="idRegistro" />
+   </many-to-one>
+    <property
+        name="semana"
+	    type="java.lang.Integer"
+    >
+<column name="semana" />
+  </property>
+
+    <property
+        name="fecha"
+	    type="date"
+    >
+<column name="fecha" length="10" />
+  </property>
+
+    <property
+        name="puntualidad"
+	    type="java.lang.Long"
+    >
+<column name="puntualidad" precision="10" scale="0" />
+  </property>
+
+    <property
+        name="asistencia"
+	    type="java.lang.Long"
+    >
+<column name="asistencia" precision="10" scale="0" />
+  </property>
+
+    <property
+        name="conducta"
+	    type="java.lang.Long"
+    >
+<column name="conducta" precision="10" scale="0" />
+  </property>
+
+    <property
+        name="misa"
+	    type="java.lang.Long"
+    >
+<column name="misa" precision="10" scale="0" />
+  </property>
+
+    <property
+        name="tarea"
+	    type="java.lang.Long"
+    >
+<column name="tarea" precision="10" scale="0" />
+  </property>
+
+    <property
+        name="extra"
+	    type="java.lang.Long"
+    >
+<column name="extra" precision="10" scale="0" />
+  </property>
+
+    <property
+        name="observaciones"
+	    type="string"
+    >
+<column name="observaciones" length="500" />
+  </property>
+
+    <property
+        name="ruta"
+	    type="string"
+    >
+<column name="ruta" length="200" />
+  </property>
+
+    <property
+        name="justificante"
+	    type="string"
+    >
+<column name="justificante" length="25" />
+  </property>
+
+    <property
+        name="estatus"
+	    type="java.lang.Boolean"
+    >
+<column name="estatus" />
+  </property>
+
+    <property
+        name="aseo"
+	    type="java.lang.Long"
+    >
+<column name="aseo" precision="18" scale="0" />
+  </property>
+
+    <property
+        name="catequesisFamiliar"
+	    type="string"
+    >
+<column name="catequesisFamiliar" length="25" />
+  </property>
+
+    <property
+        name="misaSalida"
+	    type="string"
+    >
+<column name="misaSalida" length="25" />
+  </property>
+
+
+
+</class>
+
 </hibernate-mapping>

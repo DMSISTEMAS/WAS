@@ -1,43 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 22/06/2020 04:07:24 PM by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping auto-import="true"
-	default-access="property" default-cascade="none" default-lazy="true">
-	<class catalog="db_cce" dynamic-insert="false"
-		dynamic-update="false" mutable="true"
-		name="org.cce.sistema.model.Parroquia" optimistic-lock="version"
-		polymorphism="implicit" select-before-update="false" table="parroquia">
-		<id name="idParroquia" type="java.lang.Integer">
-			<column name="idParroquia" />
-			<generator class="identity" />
-		</id>
-		<property generated="never" lazy="false" name="diocesis"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="200" name="diocesis" />
-		</property>
-		<property generated="never" lazy="false" name="decanato"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="200" name="decanato" />
-		</property>
-		<property generated="never" lazy="false" name="parroquia"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="200" name="parroquia" />
-		</property>
-		<property generated="never" lazy="false" name="presbitero"
-			optimistic-lock="true" type="string" unique="false">
-			<column length="200" name="presbitero" />
-		</property>
-		<property generated="never" lazy="false" name="logo"
-			optimistic-lock="true" type="binary" unique="false">
-			<column name="logo" />
-		</property>
-		<set fetch="select" inverse="true" lazy="true" mutable="true"
-			name="registros" optimistic-lock="true" sort="unsorted"
-			table="registro">
-			<key on-delete="noaction">
-				<column name="idParroquia" />
-			</key>
-			<one-to-many class="org.cce.sistema.model.Registro"
-				not-found="exception" />
-		</set>
-	</class>
+<!-- Generated 24/06/2020 10:23:40 AM by Hibernate Tools 5.3.15.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="db_cce" dynamic-insert="false" dynamic-update="false" mutable="true" name="org.cce.sistema.model.Parroquia" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="parroquia">
+        <id name="idParroquia" type="java.lang.Integer">
+            <column name="idParroquia"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="diocesis" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="diocesis"/>
+        </property>
+        <property generated="never" lazy="false" name="decanato" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="decanato"/>
+        </property>
+        <property generated="never" lazy="false" name="parroquia" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="parroquia"/>
+        </property>
+        <property generated="never" lazy="false" name="presbitero" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="presbitero"/>
+        </property>
+        <property generated="never" lazy="false" name="logo" optimistic-lock="true" type="binary" unique="false">
+            <column name="logo"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="registros" optimistic-lock="true" sort="unsorted" table="registro">
+            <key on-delete="noaction">
+                <column name="idParroquia"/>
+            </key>
+            <one-to-many class="org.cce.sistema.model.Registro" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
 </hibernate-mapping>

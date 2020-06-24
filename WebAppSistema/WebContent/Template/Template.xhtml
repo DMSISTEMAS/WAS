@@ -12,8 +12,8 @@
 	<link href="/resources/css/estilo_menu.css" rel="stylesheet"
 		type="text/css" />
 	<link
-			href="https://fonts.googleapis.com/css?family=Barlow:300display=swap"
-			rel="stylesheet" />
+		href="https://fonts.googleapis.com/css?family=Barlow:300display=swap"
+		rel="stylesheet" />
 	<!-- 		href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"></link> -->
 	<title>Sistema</title>
 
@@ -53,9 +53,8 @@
 								value="Libros" outcome="/Views/Libro" icon="ui-icon-gear" />
 							<p:menuitem
 								disabled="#{loginBean.usuario.codperfil eq 'Administrador'}"
-								value="Horarios" outcome="/Views/Horario"
-								icon="ui-icon-gear" />
-								<p:menuitem
+								value="Horarios" outcome="/Views/Horario" icon="ui-icon-gear" />
+							<p:menuitem
 								disabled="#{loginBean.usuario.codperfil eq 'Administrador'}"
 								value="Presbitero" outcome="/Views/Parroquia"
 								icon="ui-icon-gear" />
@@ -72,6 +71,39 @@
 								value="Registros de catequesis" outcome="/Views/Control"
 								icon="ui-icon-gear" />
 						</p:submenu>
+						<p:submenu label="Municipio" icon="ui-icon-plus">
+							<p:menuitem
+								disabled="#{loginBean.usuario.codperfil eq 'Administrador'}"
+								value="Municipios" outcome="/Views/Municipio"
+								icon="ui-icon-gear" />
+						</p:submenu>
+						<p:submenu label="Bautismo" icon="ui-icon-plus">
+							<p:menuitem
+								disabled="#{loginBean.usuario.codperfil eq 'Administrador'}"
+								value="Lugar y Parroquia" outcome="/Views/Bautismo"
+								icon="ui-icon-gear" />
+						</p:submenu>
+						<p:submenu label="Porcentaje" icon="ui-icon-plus">
+							<p:menuitem
+								disabled="#{loginBean.usuario.codperfil eq 'Administrador'}"
+								value="Porcentajes calificación" outcome="/Views/Porcentaje"
+								icon="ui-icon-gear" />
+						</p:submenu>
+						<p:submenu label="Número de casa" icon="ui-icon-plus">
+							<p:menuitem
+								disabled="#{loginBean.usuario.codperfil eq 'Administrador'}"
+								value="Números" outcome="/Views/Numero" icon="ui-icon-gear" />
+						</p:submenu>
+						<p:submenu label="Código postal" icon="ui-icon-plus">
+							<p:menuitem
+								disabled="#{loginBean.usuario.codperfil eq 'Administrador'}"
+								value="Código postal" outcome="/Views/Codigo" icon="ui-icon-gear" />
+						</p:submenu>
+						<p:submenu label="Dirección" icon="ui-icon-plus">
+							<p:menuitem
+								disabled="#{loginBean.usuario.codperfil eq 'Administrador'}"
+								value="Dirección" outcome="/Views/Direccion" icon="ui-icon-gear" />
+						</p:submenu>
 					</p:menubar>
 				</h:form>
 
@@ -87,7 +119,7 @@
 		</div>
 
 		<div id="bottom">
-			<ui:insert name="bottom">&copy; COLOIDALES DUCHÉ-INSOFTEC 2017</ui:insert>
+			<ui:insert name="bottom">&copy; DM SISTEMAS 2020</ui:insert>
 		</div>
 
 	</h:body>
